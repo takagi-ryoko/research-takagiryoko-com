@@ -44,10 +44,20 @@
 
 ## Step 3: 初回コミットを作成
 
-1. GitHub Desktop の画面で「Changes」タブに、多数のファイル（package.json, src/, public/, docs/, README.md など）が表示されているはず
-2. 画面左下の **Summary** に「Initial commit - Astro migration」と入力
-3. 「Commit to main」ボタンをクリック
-4. 数秒でコミット完了
+**バージョンによって挙動が変わります：**
+
+### パターンA：GitHub Desktop が自動でコミット済みの場合
+
+- 「Changes」タブが「0 changed files / No local changes」と表示される
+- 「History」タブに「Initial commit」が既に存在する（66ファイルなど）
+- **これは正常。既に初回コミットが自動作成されています。**次の Step 4 に進んでください。
+
+### パターンB：手動でコミットする必要がある場合
+
+- 「Changes」タブに多数のファイル（package.json, src/, public/, docs/ など）が表示される
+- 画面左下の **Summary** に「Initial commit - Astro migration」と入力
+- 「Commit to main」ボタンをクリック
+- 数秒でコミット完了
 
 ---
 

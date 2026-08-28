@@ -1,0 +1,355 @@
+---
+/**
+ * トップページ
+ * 現状の index.html を完全に Astro 化。
+ * ニュースセクションのみ Content Collection から動的生成。
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import NewsListTop from '../components/NewsListTop.astro';
+---
+
+<BaseLayout title="高木良子｜弔いとテクノロジー研究">
+  <Header />
+
+  <main>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-inner">
+      <img class="hero-photo" src="/images/Profile.png" alt="高木良子 / Ryoko Takagi" width="505" height="505" fetchpriority="high" decoding="async" />
+
+      <div class="hero-text">
+        <h1>
+          <span data-lang="ja">高木 良子</span>
+          <span data-lang="en">Ryoko Takagi</span>
+          <span class="en-name">RYOKO TAKAGI</span>
+        </h1>
+
+        <div class="hero-affil">
+          <span data-lang="ja">
+            東京科学大学 環境・社会理工学院 社会・人間科学系 博士後期課程<br>
+            国立研究開発法人科学技術振興機構「ケアが根づく社会システム」研究開発領域・「人間と非人間の惑星的ケア」研究開発プロジェクト 博士研究員
+          </span>
+          <span data-lang="en">
+            PhD Candidate, School of Environment and Society,<br>
+            Institute of Science Tokyo (Science Tokyo)<br>
+            JSPS / JST Doctoral Research Fellow,
+          </span>
+        </div>
+
+        <p class="hero-tagline">
+          <span data-lang="ja">AI故人・遺人形・デスマスクなどを対象に「弔いとテクノロジー」をテーマとした人類学的研究をしています。看取りから弔いまでを一連の営みとして捉え直す視座から、台湾の仏教式終末期スピリチュアルケアや、土葬・有機還元葬（コンポスト葬、堆肥葬、水火葬[アクアメーション]）といった新しい葬法も研究しています。</span>
+          <span data-lang="en">Cultural anthropologist researching the intersection of mourning, memory, and technology — including AI-generated deceased (deadbots), memorial dolls, and death masks. Also studying Buddhist end-of-life spiritual care in Taiwan and emerging burial practices such as natural organic reduction.</span>
+        </p>
+
+        <div class="hero-links">
+          <a data-lang="ja" href="https://researchmap.jp/takagiryoko?lang=ja" target="_blank" rel="noopener">researchmap</a>
+          <a data-lang="en" href="https://researchmap.jp/takagiryoko?lang=en" target="_blank" rel="noopener">researchmap</a>
+          <a href="https://x.com/takagiryoko" target="_blank" rel="noopener">X (@takagiryoko)</a>
+          <a href="#form">
+            <span data-lang="ja">お問い合わせ</span>
+            <span data-lang="en">Contact</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── NEWS ── -->
+  <section id="news" style="padding-bottom: 16px;">
+    <h2 class="sec-label sec-label-with-filter">
+      <span class="sec-label-title">
+        <span data-lang="ja">ニュース</span>
+        <span data-lang="en">News</span>
+      </span>
+      <span class="news-filter" id="newsFilter">
+        <button class="filter-tag active" data-filter="all"><span data-lang="ja">すべて</span><span data-lang="en">All</span></button>
+        <button class="filter-tag" data-filter="paper"><span data-lang="ja">論文</span><span data-lang="en">Papers</span></button>
+        <button class="filter-tag" data-filter="conf"><span data-lang="ja">学会発表</span><span data-lang="en">Conf.</span></button>
+        <button class="filter-tag" data-filter="lect"><span data-lang="ja">講演・登壇</span><span data-lang="en">Talks</span></button>
+        <button class="filter-tag" data-filter="media"><span data-lang="ja">寄稿・メディア</span><span data-lang="en">Media</span></button>
+        <button class="filter-tag" data-filter="grant"><span data-lang="ja">助成金・受賞</span><span data-lang="en">Grants</span></button>
+      </span>
+    </h2>
+    <NewsListTop />
+    <a href="/news.html" class="news-view-all">
+      <span data-lang="ja">すべてのニュースを見る</span>
+      <span data-lang="en">See all news</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="#hero" class="back-top">↑ トップに戻る</a>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about" style="padding-top: 16px; padding-bottom: 16px;">
+    <h2 class="sec-label">
+      <span data-lang="ja">研究について</span>
+      <span data-lang="en">Research</span>
+    </h2>
+
+    <div class="about-text" data-lang="ja">
+      <p>
+        現在は、弔いのメディアのメインストリームからはみ出した（ように見える）新しい死者の表象――<strong>AI故人</strong>（AIで故人の姿や声を表現したもの）、<strong>遺人形</strong>（3Dプリンターで故人をフィギュアとして再表現したもの）、<strong>デスマスク</strong>（故人の相貌を直接型取ったもの）を対象として、質的調査を進めています。
+      </p>
+      <p>
+        日本、韓国、中国にて、これらの死者の表象をもつ遺族へのインタビューを行いながら、「遺族はそこに何を視ており、死者はどのようにそこに在るのか？」を考えつづけています。
+      </p>
+      <p>
+        専門は文化人類学・宗教学。主要な研究テーマは「弔いとテクノロジー」ですが、最近は「死」だけを特別なものとして切り出すのではなく、「看取りから弔い」までを"一連の営み"として結び直すことを念頭に、台湾の仏教式終末期スピリチュアルケア等も研究の対象としています。
+      </p>
+    </div>
+
+    <div class="about-text" data-lang="en">
+      <p>
+        My research explores new forms of representing the dead that appear to diverge from mainstream mourning media: <strong>AI deceased</strong> (AI-generated recreations of the dead), <strong>memorial dolls</strong> (<em>i-ningyō</em>, 3D-printed figurines of the deceased), and <strong>death masks</strong> (casts taken directly from the face of the deceased).
+      </p>
+      <p>
+        Through qualitative fieldwork and interviews with bereaved families in Japan, South Korea, and China, I ask: what do the bereaved see in these representations, and in what way is the dead present within them?
+      </p>
+      <p>
+        My disciplinary home is cultural anthropology and religious studies, with a focus on mourning, technology, and material culture.
+      </p>
+      <p>
+        More recently, I have also turned to Buddhist end-of-life spiritual care in Taiwan, with the aim of reconnecting the full arc from bedside care to mourning as a continuous set of practices — rather than treating "death" as an isolated event.
+      </p>
+    </div>
+
+    <div class="keyword-list">
+      <span class="kw">弔いとテクノロジー</span>
+      <span class="kw">AI故人</span>
+      <span class="kw">遺人形</span>
+      <span class="kw">デスマスク</span>
+      <span class="kw">文化人類学</span>
+      <span class="kw">宗教学</span>
+      <span class="kw">死生学</span>
+    </div>
+    <a href="#hero" class="back-top">↑ トップに戻る</a>
+  </section>
+
+
+  <!-- ── INTERVIEW ── -->
+  <section id="interview" style="padding-top: 16px; padding-bottom: 16px;">
+    <h2 class="sec-label">
+      <span data-lang="ja">インタビュー｜お話しお聞かせください</span>
+      <span data-lang="en">Interview｜Share your story</span>
+    </h2>
+    <div class="interview-banners">
+      <a href="/interview-selfai.html" class="interview-banner-inner">
+        <div class="interview-banner-text">
+          <p class="interview-banner-eyebrow" data-lang="ja">I N T E R V I E W &nbsp;&middot;&nbsp; 自作AI故人</p>
+          <p class="interview-banner-eyebrow" data-lang="en">I N T E R V I E W &nbsp;&middot;&nbsp; Self-made AI deceased</p>
+          <p class="interview-banner-title" data-lang="ja">ご自身でAIを使い、亡き近親者の姿や声を再表現してみた方を探しています。</p>
+          <p class="interview-banner-title" data-lang="en">Looking for people who have used AI on their own to recreate the voice or likeness of a deceased family member.</p>
+        </div>
+        <svg class="interview-banner-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+      <a href="/interview-burial.html" class="interview-banner-inner">
+        <div class="interview-banner-text">
+          <p class="interview-banner-eyebrow" data-lang="ja">I N T E R V I E W &nbsp;&middot;&nbsp; 土葬を望まれる方</p>
+          <p class="interview-banner-eyebrow" data-lang="en">I N T E R V I E W &nbsp;&middot;&nbsp; Wishing for burial</p>
+          <p class="interview-banner-title" data-lang="ja">ご自身で土葬を望まれている方、ご家族・近しい方の土葬を希望されている方を探しています。</p>
+          <p class="interview-banner-title" data-lang="en">Looking for people who wish for burial rather than cremation — for themselves or for a family member.</p>
+        </div>
+        <svg class="interview-banner-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
+    <a href="#hero" class="back-top">↑ トップに戻る</a>
+  </section>
+
+  <!-- ── PUBLICATIONS ── -->
+  <section id="publications" style="padding-top: 16px; padding-bottom: 16px;">
+    <h2 class="sec-label">
+      <span data-lang="ja">主な業績（書籍・論文）</span>
+      <span data-lang="en">Selected Publications (Books &amp; Papers)</span>
+    </h2>
+
+    <!-- 死を感受する -->
+    <div class="book-item">
+      <div class="book-cover">
+        <a href="https://www.kyoto-up.or.jp/books/9784814006304.html" target="_blank" rel="noopener">
+          <img src="/images/book02.png" alt="書影：『死を感受する—情動論から生の潜在性へ』京都大学学術出版会" width="500" height="702" loading="lazy" decoding="async" />
+        </a>
+      </div>
+      <div class="book-info">
+        <p class="book-title">
+          <span data-lang="ja">『死を感受する—情動論から生の潜在性へ』京都大学学術出版会, 2025年12月</span>
+          <span data-lang="en"><em>Sensing Death: From Theories of Affect to the Potentiality of Life</em>, Kyoto University Press, December 2025</span>
+        </p>
+        <p class="book-meta">
+          <span data-lang="ja">本書に以下の論考を寄稿</span>
+          <span data-lang="en">Contains the following contribution:</span>
+        </p>
+        <ul class="book-chapters">
+          <li class="book-chapter">
+            <div><span data-lang="ja">「死者の「顔」と出会い直す——現代のデスマスクをめぐって」</span><span data-lang="en">"Re-encountering the 'Face' of the Dead: On Contemporary Death Masks"</span></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RITA MAGAZINE -->
+    <div class="book-item">
+      <div class="book-cover">
+        <a href="https://mishimasha.com/books/9784911226179/" target="_blank" rel="noopener">
+          <img src="/images/book1.png" alt="書影：『RITA MAGAZINE 2 死者とテクノロジー』ミシマ社" width="900" height="1198" loading="lazy" decoding="async" />
+        </a>
+      </div>
+      <div class="book-info">
+        <p class="book-title">
+          <span data-lang="ja">『RITA MAGAZINE２ 死者とテクノロジー』ミシマ社, 2025年3月</span>
+          <span data-lang="en"><em>RITA MAGAZINE 2: The Dead and Technology</em>, Mishima-sha, March 2025</span>
+        </p>
+        <p class="book-meta">
+          <span data-lang="ja">本書に以下の4論考を寄稿</span>
+          <span data-lang="en">Contains four contributions:</span>
+        </p>
+        <ul class="book-chapters">
+          <li class="book-chapter">
+            <div><span data-lang="ja">「亡き娘と再会する〜韓国のVRヒューマンドキュメンタリー「あなたに出会った」を事例に」</span><span data-lang="en">"Reuniting with a Late Daughter: The Korean VR Documentary <em>Meeting You</em>"</span></div>
+            <div class="book-chapter-pp">pp. 106–119</div>
+          </li>
+          <li class="book-chapter">
+            <div><span data-lang="ja">「中国・AI故人ビジネスの今～南京超級頭脳信息技術有限責任公司 張澤偉代表に訊く」</span><span data-lang="en">"AI Deceased Business in China Today: Interview with Zhang Zewei"</span></div>
+            <div class="book-chapter-pp">pp. 138–147</div>
+          </li>
+          <li class="book-chapter">
+            <div><span data-lang="ja">「遺骨アクセサリー・堆肥葬・自然循環型葬〜弔いの多様化とその裏にひそむもの」</span><span data-lang="en">"Bone Accessories, Compost Burial, and Natural Burial: The Diversification of Mourning"</span></div>
+            <div class="book-chapter-pp">pp. 178–193</div>
+          </li>
+          <li class="book-chapter">
+            <div><span data-lang="ja">「されど仏壇～廃棄とデジタル化のリアル 論考（インタビュー）」</span><span data-lang="en">"Even So, the Buddhist Altar: The Reality of Disposal and Digitization"</span></div>
+            <div class="book-chapter-pp">pp. 218–225</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top: 32px; font-size: 14px; color: var(--gray-dark); text-align: right;">
+      <span data-lang="ja">→ その他の論文、発表、経歴などの詳細は<a href="https://researchmap.jp/takagiryoko?lang=ja" target="_blank" rel="noopener" style="font-weight: bold; color: var(--black); border-bottom: 1px solid var(--gray-mid); text-decoration: none;">こちら</a>へ</span>
+      <span data-lang="en">→ For papers, presentations, and full CV, visit <a href="https://researchmap.jp/takagiryoko?lang=en" target="_blank" rel="noopener" style="font-weight: bold; color: var(--black); border-bottom: 1px solid var(--gray-mid); text-decoration: none;">researchmap</a></span>
+    </p>
+    <a href="#hero" class="back-top">↑ トップに戻る</a>
+  </section>
+
+  <!-- ── NEWSLETTER ── -->
+  <section id="newsletter" style="padding-top: 16px; padding-bottom: 16px;">
+    <h2 class="sec-label">
+      <span data-lang="ja">ニュースレター配信</span>
+      <span data-lang="en">Newsletter</span>
+    </h2>
+    <div class="newsletter-card">
+      <p class="newsletter-eyebrow">
+        <span data-lang="ja">F I E L D   N O T E S</span>
+        <span data-lang="en">F I E L D   N O T E S</span>
+      </p>
+      <p class="newsletter-heading">
+        <span data-lang="ja">弔いのフィールドワーク｜研究者 高木良子のニュースレター</span>
+        <span data-lang="en">Field Notes on Mourning — Newsletter by Ryoko Takagi</span>
+      </p>
+      <p class="newsletter-lead">
+        <span data-lang="ja">弔いをめぐる思考の断片、フィールドノート、国内外の弔いとテクノロジー（デステック）に関するニュース解説や、新刊・登壇のお知らせなどを、theLetterより月に一度お送りします。</span>
+        <span data-lang="en">Fragments of thought on mourning, field notes, and commentary on global DeathTech news, along with updates on new publications and talks — delivered monthly via theLetter.</span>
+      </p>
+      <a href="https://takagiryoko.theletter.jp/" target="_blank" rel="noopener" class="newsletter-btn">
+        <span class="newsletter-btn-label">
+          <span data-lang="ja">登録ページへ</span>
+          <span data-lang="en">Go to subscribe page</span>
+        </span>
+        <svg class="newsletter-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 17L17 7"/>
+          <polyline points="8 7 17 7 17 16"/>
+        </svg>
+      </a>
+      <p class="newsletter-meta">
+        <span data-lang="ja">無料（一部有料） ・ いつでも解除可 ・ Powered by theLetter</span>
+        <span data-lang="en">Free (some paid) · Unsubscribe anytime · Powered by theLetter</span>
+      </p>
+    </div>
+    <a href="#hero" class="back-top">↑ トップに戻る</a>
+  </section>
+
+  <!-- ── FORM ── -->
+  <section id="form" style="padding-top: 30px;">
+    <h2 class="sec-label">
+      <span data-lang="ja">お問い合わせ</span>
+      <span data-lang="en">Contact</span>
+    </h2>
+
+    <form
+      class="contact-form"
+      action="https://formspree.io/f/xrerzvog"
+      method="POST"
+    >
+      <input type="hidden" name="_replyto" value="takagiryoko@gmail.com" />
+
+      <div class="form-row">
+        <label for="name">
+          <span data-lang="ja">お名前</span>
+          <span data-lang="en">Name</span>
+        </label>
+        <input type="text" id="name" name="name" required autocomplete="name" />
+      </div>
+
+      <div class="form-row">
+        <label for="organization">
+          <span data-lang="ja">ご所属先</span>
+          <span data-lang="en">Organization</span>
+        </label>
+        <input type="text" id="organization" name="organization" autocomplete="organization" />
+      </div>
+
+      <div class="form-row">
+        <label for="tel">
+          <span data-lang="ja">電話番号</span>
+          <span data-lang="en">Phone</span>
+        </label>
+        <input type="tel" id="tel" name="tel" required autocomplete="tel" />
+      </div>
+
+      <div class="form-row">
+        <label for="email">
+          <span data-lang="ja">メールアドレス</span>
+          <span data-lang="en">Email</span>
+        </label>
+        <input type="email" id="email" name="email" required autocomplete="email" />
+      </div>
+
+      <div class="form-row">
+        <label for="subject">
+          <span data-lang="ja">件名</span>
+          <span data-lang="en">Subject</span>
+        </label>
+        <input type="text" id="subject" name="subject" required />
+      </div>
+
+      <div class="form-row">
+        <label for="message">
+          <span data-lang="ja">メッセージ</span>
+          <span data-lang="en">Message</span>
+        </label>
+        <textarea id="message" name="message" rows="12" required></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">
+        <span data-lang="ja">送信する</span>
+        <span data-lang="en">Send</span>
+      </button>
+
+    </form>
+    <a href="#hero" class="back-top">↑ トップに戻る</a>
+  </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>Copyright © 2026 Takagi Ryoko. All rights reserved.</p>
+  </footer>
+</BaseLayout>

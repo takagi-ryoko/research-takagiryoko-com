@@ -1,0 +1,22 @@
+---
+/**
+ * トップページ用のニュース一覧
+ * ピン留め + 非ピン留めの最新5件を表示
+ */
+import { getCollection } from 'astro:content';
+import NewsItem from './NewsItem.astro';
+
+// archiveOnly でない項目を全部取得
+const allNews = await getCollection('news', (entry) => !entry.data.archiveOnly);
+
+// 日付降順に並び替え
+allNews.sort((a, b) => {
+  const dateA = a.data.date instanceof Date ? a.data.date : new Date(String(a.data.date));
+  const dateB = b.data.date instanceof Date ? b.data.date : new Date(String(b.data.date));
+  return dateB.getTime() - dateA.getTime();
+});
+---
+
+<ul class="talk-list">
+  {allNews.map((news) => <NewsItem news={news} />)}
+</ul>

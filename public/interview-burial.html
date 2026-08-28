@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>お話を、聞かせてください — 土葬を望まれる方へ｜高木良子</title>
+  <meta name="description" content="火葬ではなく土葬を望まれる方、ご家族・近しい方の土葬を希望されている方の声を、文化人類学者 高木良子が伺っています。宗教的・文化的・個人的、どんな理由でも歓迎。匿名・対面/電話/オンライン可・薄謝あり。" />
+  <meta name="author" content="高木良子 / Ryoko Takagi" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#faf9f7" />
+  <link rel="canonical" href="https://research.takagiryoko.com/interview-burial.html" />
+
+  <!-- favicon / touch-icon -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="高木良子｜弔いとテクノロジー研究" />
+  <meta property="og:title" content="お話を、聞かせてください — 土葬を望まれる方へ" />
+  <meta property="og:description" content="火葬ではなく土葬を望まれる方、ご家族の土葬を希望されている方の声を、文化人類学者 高木良子が伺っています。宗教的・文化的・個人的、どんな理由でも歓迎。匿名・対面/電話/オンライン可・薄謝あり。" />
+  <meta property="og:url" content="https://research.takagiryoko.com/interview-burial.html" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:image" content="https://research.takagiryoko.com/images/ogp.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="お話を、聞かせてください — 土葬を望まれる方へ" />
+  <meta name="twitter:description" content="火葬ではなく土葬を望まれる方、ご家族の土葬を希望されている方の声を、文化人類学者 高木良子が伺っています。" />
+  <meta name="twitter:image" content="https://research.takagiryoko.com/images/ogp.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Serif:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111;
+      --gray-dark: #444;
+      --gray-mid: #888;
+      --gray-light: #ccc;
+      --bg: #faf9f7;
+      --white: #fff;
+      --accent: #b08968;
+      --accent-dark: #8b6f47;
+      --navy: #1e3a5f;
+      --walnut: #5d4626;
+      --line-green: #06C755;
+      --line-green-dark: #05a548;
+      --serif-ja: 'Noto Serif JP', serif;
+      --serif-en: 'Noto Serif', serif;
+      --max-w: 720px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--serif-ja);
+      background: var(--bg);
+      color: var(--black);
+      line-height: 2;
+      font-size: 16px;
+      line-break: strict;
+      word-break: auto-phrase;
+    }
+
+    /* 段落の最終行が短くなるのを抑える（モダンブラウザで自動最適化） */
+    p, li {
+      text-wrap: pretty;
+    }
+    h1, h2, h3, .hero-title, .form-heading {
+      text-wrap: balance;
+    }
+
+    /* ── top bar ── */
+    .top-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 14px 24px;
+      background: rgba(250,249,247,.92);
+      backdrop-filter: blur(4px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s;
+    }
+    .top-bar.scrolled { border-bottom-color: var(--gray-light); }
+    .top-bar a {
+      font-size: 13px;
+      letter-spacing: .08em;
+      color: var(--gray-mid);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .top-bar a:hover { color: var(--black); }
+
+    /* ── sections ── */
+    section, .wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 44px 32px;
+    }
+
+    /* ── hero ── */
+    #hero {
+      padding-top: 130px;
+      padding-bottom: 44px;
+    }
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-size: clamp(26px, 4.5vw, 36px);
+      font-weight: 400;
+      line-height: 1.55;
+      letter-spacing: .03em;
+      margin-bottom: 24px;
+    }
+    .hero-sub {
+      font-size: 16px;
+      line-height: 2;
+      color: var(--gray-dark);
+      max-width: 600px;
+    }
+
+    /* ── reassurance chips ── */
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 32px;
+    }
+    .chip {
+      font-size: 12px;
+      letter-spacing: .06em;
+      border: 1px solid var(--gray-light);
+      padding: 6px 14px;
+      color: var(--gray-dark);
+      background: var(--white);
+    }
+
+    .hero-cta {
+      margin-top: 30px;
+    }
+    .hero-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      letter-spacing: .08em;
+      color: var(--gray-dark);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gray-light);
+      padding-bottom: 3px;
+      transition: color .2s, border-color .2s;
+    }
+    .hero-cta a:hover { color: var(--black); border-color: var(--black); }
+    .hero-cta svg { width: 13px; height: 13px; }
+
+    /* ── researcher card ── */
+    .who-card {
+      display: flex;
+      gap: 26px;
+      align-items: flex-start;
+      padding: 30px;
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+    }
+    .who-photo {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .who-body { flex: 1; min-width: 0; }
+    .who-name {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .who-name .en-name {
+      font-family: var(--serif-en);
+      font-size: 12px;
+      letter-spacing: .12em;
+      color: var(--gray-mid);
+      margin-left: 8px;
+    }
+    .who-affil {
+      font-size: 13px;
+      color: var(--gray-mid);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .who-msg {
+      font-size: 14px;
+      color: var(--gray-dark);
+      line-height: 2;
+    }
+    @media (max-width: 600px) {
+      .who-card { flex-direction: column; align-items: center; text-align: center; padding: 24px 20px; }
+      .who-affil, .who-msg { text-align: left; }
+    }
+
+    /* ── narrative ── */
+    .narrative h2 {
+      font-size: 18px;
+      font-weight: normal;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 26px;
+    }
+    .narrative p {
+      font-size: 16px;
+      line-height: 2.1;
+      color: var(--gray-dark);
+      margin-bottom: 1.3em;
+    }
+    .narrative p strong {
+      color: var(--black);
+      font-weight: 500;
+    }
+
+    /* ── examples list ── */
+    .examples {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 20px 0 10px;
+      padding: 26px 30px;
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+    }
+    .examples li {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--gray-dark);
+      padding-left: 24px;
+      position: relative;
+    }
+    .examples li::before {
+      content: '◦';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 18px;
+      top: -2px;
+    }
+    .examples-note {
+      font-size: 13.5px;
+      color: var(--gray-mid);
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    /* ── what ── */
+    .what-grid {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 16px 22px;
+      margin: 18px 0;
+    }
+    .what-key {
+      font-size: 15px;
+      letter-spacing: .05em;
+      color: var(--black);
+      font-weight: 500;
+      line-height: 1.95;
+    }
+    .what-val {
+      font-size: 15px;
+      color: var(--gray-dark);
+      line-height: 1.95;
+    }
+    @media (max-width: 600px) {
+      .what-grid { grid-template-columns: 1fr; gap: 4px 0; }
+      .what-val { margin-bottom: 14px; }
+    }
+
+    /* ── promises ── */
+    .promises {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .promises li {
+      font-size: 15px;
+      line-height: 1.95;
+      color: var(--gray-dark);
+      padding-left: 28px;
+      position: relative;
+    }
+    .promises li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 13px;
+      width: 16px; height: 1px;
+      background: var(--accent);
+    }
+    .promises li strong {
+      display: block;
+      color: var(--black);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+    p.promises-note {
+      font-size: 10px;
+      color: var(--gray-mid);
+      line-height: 1.9;
+      margin-top: 24px;
+      margin-bottom: 0;
+      padding-left: 28px;
+    }
+
+    /* ── form section ── */
+    #form-section {
+      padding-top: 64px;
+      padding-bottom: 30px;
+    }
+    .form-eyebrow {
+      font-size: 12px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .form-heading {
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: .04em;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .form-lead {
+      font-size: 15px;
+      color: var(--gray-dark);
+      text-align: center;
+      line-height: 2;
+      margin-bottom: 40px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .interview-form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .form-row { display: flex; flex-direction: column; gap: 8px; }
+    .form-row label {
+      font-size: 14px;
+      letter-spacing: .04em;
+      color: var(--gray-dark);
+      font-weight: 500;
+    }
+    .form-row label .opt {
+      font-size: 11px;
+      letter-spacing: .1em;
+      color: var(--gray-mid);
+      margin-left: 8px;
+      text-transform: uppercase;
+      font-weight: normal;
+    }
+    .form-row .hint {
+      font-size: 13px;
+      color: var(--gray-mid);
+      margin-top: 2px;
+      line-height: 1.7;
+    }
+    .form-row input,
+    .form-row textarea {
+      font-family: var(--serif-ja);
+      font-size: 16px;
+      color: var(--black);
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color .2s;
+      width: 100%;
+      resize: vertical;
+    }
+    .form-row input:focus,
+    .form-row textarea:focus { border-color: var(--gray-mid); }
+    .form-submit {
+      align-self: center;
+      font-family: var(--serif-ja);
+      font-size: 15px;
+      letter-spacing: .14em;
+      background: var(--navy);
+      color: var(--white);
+      border: 1px solid var(--navy);
+      padding: 16px 44px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background .2s, letter-spacing .2s, border-color .2s;
+    }
+    .form-submit:hover {
+      background: var(--walnut);
+      border-color: var(--walnut);
+      letter-spacing: .16em;
+    }
+    .form-disclaimer {
+      font-size: 12.5px;
+      color: var(--gray-mid);
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.8;
+    }
+
+    /* ── LINE section ── */
+    .line-section {
+      max-width: var(--max-w);
+      margin: 30px auto 0;
+      padding: 0 32px;
+    }
+    .line-card {
+      padding: 36px 32px;
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      text-align: center;
+      position: relative;
+    }
+    .line-card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 50%;
+      transform: translateX(-50%);
+      width: 36px; height: 2px;
+      background: var(--line-green);
+    }
+    .line-eyebrow {
+      font-size: 12px;
+      letter-spacing: .2em;
+      color: var(--line-green-dark);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+    .line-heading {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 14px;
+      letter-spacing: .03em;
+      line-height: 1.7;
+    }
+    .line-lead {
+      font-size: 14.5px;
+      color: var(--gray-dark);
+      line-height: 1.95;
+      margin-bottom: 24px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .line-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 36px;
+      background: var(--line-green);
+      color: var(--white) !important;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      font-family: inherit;
+      text-decoration: none;
+      border: 1px solid var(--line-green);
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+    }
+    .line-btn:hover {
+      background: var(--line-green-dark);
+      border-color: var(--line-green-dark);
+    }
+    .line-btn-icon {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+    .line-qr-wrap {
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .line-qr-wrap img {
+      width: 140px;
+      height: 140px;
+      border: 1px solid var(--gray-light);
+      padding: 8px;
+      background: var(--white);
+    }
+    .line-qr-caption {
+      font-size: 12px;
+      color: var(--gray-mid);
+    }
+    .line-meta {
+      font-size: 12.5px;
+      color: var(--gray-mid);
+      margin-top: 20px;
+      letter-spacing: .03em;
+    }
+    @media (max-width: 600px) {
+      .line-card { padding: 28px 22px; }
+    }
+
+    /* ── back link ── */
+    .back-top {
+      display: block;
+      text-align: center;
+      font-size: 13px;
+      letter-spacing: .1em;
+      color: var(--gray-mid);
+      text-decoration: none;
+      margin-top: 56px;
+      transition: color .2s;
+    }
+    .back-top:hover { color: var(--black); }
+
+    /* ── footer ── */
+    footer {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 36px 32px 56px;
+      font-size: 12px;
+      color: var(--gray-mid);
+      border-top: 1px solid var(--gray-light);
+      text-align: center;
+    }
+
+    /* ── thanks ── */
+    .thanks-block {
+      display: none;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 40px 32px;
+      text-align: center;
+      background: var(--white);
+      border: 1px solid var(--accent);
+    }
+    .thanks-block h3 {
+      font-size: 17px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      color: var(--black);
+    }
+    .thanks-block p {
+      font-size: 14.5px;
+      color: var(--gray-dark);
+      line-height: 2;
+    }
+    body.submitted .interview-form,
+    body.submitted .form-disclaimer,
+    body.submitted .form-eyebrow,
+    body.submitted .form-heading,
+    body.submitted .form-lead { display: none; }
+    body.submitted .thanks-block { display: block; }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar" id="topBar">
+    <a href="/">← 高木良子｜弔いとテクノロジー研究</a>
+  </div>
+
+  <main>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <p class="hero-eyebrow">I N T E R V I E W &nbsp;&middot;&nbsp; お話を聞かせてください</p>
+    <h1 class="hero-title">
+      火葬ではなく土葬を、<br>
+      望まれている方の声を、<br>
+      聞かせてください。
+    </h1>
+    <p class="hero-sub">
+      ご自身の弔いとして、あるいはご家族・近しい方の弔いとして、<strong>土葬</strong>を望まれている方々のお話を、文化人類学者の高木良子が伺わせていただいています。<br>
+      宗教的な理由でも、文化的な理由でも、ご自身の感覚としての理由でも——どのような背景の方でも、どうぞお声がけください。
+    </p>
+
+    <div class="chip-row">
+      <span class="chip">匿名・お名前は仮名で可</span>
+      <span class="chip">対面・電話・オンライン</span>
+      <span class="chip">60〜90分</span>
+      <span class="chip">薄謝あり</span>
+      <span class="chip">守秘義務あり</span>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#form-section">
+        まずはご連絡フォームへ
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── WHO IS ASKING ── -->
+  <section>
+    <div class="who-card">
+      <img class="who-photo" src="images/Profile.png" alt="高木良子" />
+      <div class="who-body">
+        <p class="who-name">高木 良子<span class="en-name">RYOKO TAKAGI</span></p>
+        <p class="who-affil">
+          文化人類学者 / 東京科学大学 環境・社会理工学院 博士後期課程
+        </p>
+        <p class="who-msg">
+          人がどのように見送られ、どのように土に還っていくのか——「弔い」をめぐる人びとの営みを、文化人類学の立場から研究しています。火葬がほとんどを占めるいまの日本で、土葬を望まれる方々の声に、いまこそ耳を傾けたいと考えています。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY ── -->
+  <section class="narrative">
+    <h2>なぜ、お話を聞きたいのか</h2>
+    <p>
+      日本では、亡くなった方の <strong>99%以上が火葬</strong> によって弔われています。けれども、土葬を望まれる方は、いまもこの国に、確かにおられます。
+    </p>
+    <p>
+      火葬という方法へのためらい、ご自身の信仰、ご先祖から受け継がれてきた地域の慣わし、土に還ることを願う自然観——その理由は、お一人お一人で違うはずです。
+    </p>
+    <p>
+      制度や法律のうえでの土葬は、近年すこしずつ話題にのぼるようになりました。しかし、<strong>「望む方ご自身が、どのように考え、何を感じて、どんな日々を送っておられるのか」</strong>——その語りは、まだ十分に記録されていません。
+    </p>
+    <p>
+      もしよろしければ、その思いを、お聞かせいただけませんでしょうか。
+    </p>
+  </section>
+
+  <!-- ── WHO ── -->
+  <section class="narrative">
+    <h2>こんな方にお声がけしたいです</h2>
+    <p>
+      たとえば、以下のような方々を探しています。どれにも完全には当てはまらなくても、<strong>「自分のことかもしれない」と感じられた方は、どうぞ</strong>。
+    </p>
+    <ul class="examples">
+      <li>火葬という方法に、どうしても気持ちがついていかない方</li>
+      <li>仏教の教え（特定の宗派を含む）から、土葬を望まれる方</li>
+      <li>キリスト教の信仰のもと、土葬を望まれる方</li>
+      <li>イスラームの教えから、土葬を望まれる方</li>
+      <li>神道の考え方から、土葬を望まれる方</li>
+      <li>ご先祖代々、あるいは地域の伝統として、土葬を続けてこられたご家族</li>
+      <li>「土に還りたい」「自然に戻りたい」というご自身の感覚をお持ちの方</li>
+      <li>ご自身の終末に土葬を希望されているけれど、ご家族や周囲には言いづらいと感じておられる方</li>
+      <li>すでにご家族やご親族の土葬の手続きを経験された方</li>
+      <li>土葬を強く望まれていたものの、断念せざるを得なかった方・ご遺族</li>
+    </ul>
+    <p class="examples-note">上記に当てはまらない理由をお持ちの方も、どうぞ遠慮なくお声がけください。</p>
+  </section>
+
+  <!-- ── WHAT ── -->
+  <section class="narrative">
+    <h2>どんなお話を、どのように</h2>
+    <div class="what-grid">
+      <div class="what-key">形式</div>
+      <div class="what-val">対面、お電話、オンライン（Zoom等）のいずれでも構いません。ご都合のよい方法をお選びください。</div>
+
+      <div class="what-key">時間</div>
+      <div class="what-val">60〜90分程度を目安にしています。短時間で構わない場合もご相談ください。</div>
+
+      <div class="what-key">場所</div>
+      <div class="what-val">対面の場合は東京近郊または日帰りで伺える範囲が基本ですが、遠方の方も出張のうえでお伺いしますので、まずはご相談ください。</div>
+
+      <div class="what-key">内容</div>
+      <div class="what-val">土葬を望まれるに至った経緯、これまでの歩み、ご家族・周囲との関係、いま考えておられることなど。お話したくないことは、お話いただかなくて結構です。</div>
+
+      <div class="what-key">記録</div>
+      <div class="what-val">録音は、ご許可をいただける場合のみ行います。録音なし・メモのみでも構いません。</div>
+    </div>
+  </section>
+
+  <!-- ── PROMISES ── -->
+  <section class="narrative">
+    <h2>大切にしていること</h2>
+    <ul class="promises">
+      <li><strong>守秘義務：</strong>個人を特定できる情報は、論文・著作・発表のいずれにおいても伏せます。</li>
+      <li><strong>匿名・仮名で記述：</strong>実名での記述をご希望の場合のみ、別途ご相談のうえ実名とさせていただきます。</li>
+      <li><strong>撤回はいつでも可能：</strong>インタビュー後にお話の一部、あるいは全体の利用停止をご希望される場合、いつでも対応します。</li>
+      <li><strong>データの保管と利用範囲：</strong>面談前に書面で改めてご説明し、ご同意をいただいた上で進めます。</li>
+      <li><strong>薄謝：</strong>Amazonカードをお渡しします。</li>
+    </ul>
+    <p class="promises-note">＊インタビューの前には十分なご説明を行い、研究倫理審査に基づいた、同意書と同意撤回書をご用意致します。</p>
+  </section>
+
+  <!-- ── FORM ── -->
+  <section id="form-section">
+    <p class="form-eyebrow">C O N T A C T &nbsp;&middot;&nbsp; お問い合わせ</p>
+    <h2 class="form-heading">まずは、ひとことだけ。</h2>
+    <p class="form-lead">
+      下のフォームから、お名前（仮名・ニックネームで構いません）と、ご連絡のつくところを一つだけ、お知らせください。2〜3日以内に、高木からご返信させていただきます。
+    </p>
+
+    <form
+      class="interview-form"
+      action="https://formspree.io/f/xrerzvog"
+      method="POST"
+    >
+      <input type="hidden" name="_subject" value="【インタビュー応募】土葬を望まれる方へ" />
+      <input type="hidden" name="_replyto" value="takagi.r.b17b@m.isct.ac.jp" />
+      <input type="hidden" name="form_source" value="interview-burial.html" />
+
+      <div class="form-row">
+        <label for="name">お名前（仮名でも結構です）</label>
+        <input type="text" id="name" name="name" required autocomplete="name" placeholder="例：山田太郎、たろう、Tなど" />
+        <p class="hint">本名でなくて構いません。あとから変更いただくこともできます。</p>
+      </div>
+
+      <div class="form-row">
+        <label for="contact">ご連絡先</label>
+        <input type="text" id="contact" name="contact" required placeholder="お電話番号、メールアドレス、LINE のID など、ひとつだけで結構です" />
+        <p class="hint">お電話・メール・LINE など、ご都合のよい方法を、ひとつだけお書きください。</p>
+      </div>
+
+      <div class="form-row">
+        <label for="message">ひとことメッセージ<span class="opt">任意</span></label>
+        <textarea id="message" name="message" rows="6" placeholder="どんな短さ・どんな内容でも構いません。たとえば「祖父の代から土葬を続けてきた家です」「自分が土葬を望んでいますが、家族には話せていません」など。"></textarea>
+        <p class="hint">空欄のままでも、お送りいただけます。</p>
+      </div>
+
+      <button type="submit" class="form-submit">送信する</button>
+
+      <p class="form-disclaimer">
+        いただいた情報は、高木良子（研究者）が本研究の連絡目的にのみ使用し、第三者に共有されることはありません。
+      </p>
+    </form>
+
+    <div class="thanks-block">
+      <h3>お送りいただき、ありがとうございました。</h3>
+      <p>
+        2〜3日以内に、高木からご返信させていただきます。<br>
+        万一しばらくしても届かない場合は、迷惑メールフォルダもご確認のうえ、<br>下記のインタビュー窓口LINEからもご連絡いただけます。
+      </p>
+    </div>
+  </section>
+
+  <!-- ── インタビュー窓口LINE ── -->
+  <div class="line-section">
+    <div class="line-card">
+      <p class="line-eyebrow">L I N E でのご連絡</p>
+      <p class="line-heading">インタビュー窓口LINEからも、ご連絡いただけます。</p>
+      <p class="line-lead">
+        フォームの入力がご面倒な方、LINE のほうがやりとりしやすい方は、下のボタンから高木の<strong>インタビュー窓口LINE</strong>を友だちに追加のうえ、メッセージをお送りください。
+      </p>
+      <a href="https://line.me/R/ti/p/@814gfmzh" target="_blank" rel="noopener" class="line-btn">
+        <svg class="line-btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+        </svg>
+        LINE で友だち追加してメッセージを送る
+      </a>
+      <div class="line-qr-wrap">
+        <!-- ここにインタビュー窓口LINEの QRコード画像を /images/line-qr.png として保存してください -->
+        <img src="images/line-qr.png" alt="インタビュー窓口LINE QRコード" onerror="this.style.display='none';this.nextElementSibling.style.display='none';" />
+        <p class="line-qr-caption">スマートフォンの LINE アプリのQRリーダーで読み取ってください</p>
+      </div>
+      <p class="line-meta">高木良子 インタビュー窓口LINE（ID: @814gfmzh） ／ メッセージは高木本人が拝見します</p>
+    </div>
+  </div>
+
+  <a href="/" class="back-top">← トップページへ戻る</a>
+
+  </main>
+
+  <footer>
+    <p>Copyright © 2026 Takagi Ryoko. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const topBar = document.getElementById('topBar');
+    window.addEventListener('scroll', () => {
+      topBar.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    const form = document.querySelector('.interview-form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = form.querySelector('.form-submit');
+      const originalLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = '送信中…';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        if (res.ok) {
+          document.body.classList.add('submitted');
+          window.scrollTo({ top: document.querySelector('.thanks-block').offsetTop - 80, behavior: 'smooth' });
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+          alert('送信に失敗しました。お手数ですが、インタビュー窓口LINEから直接ご連絡ください。');
+        }
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+        alert('送信に失敗しました。お手数ですが、LINE 公式アカウントから直接ご連絡ください。');
+      }
+    });
+  </script>
+
+</body>
+</html>

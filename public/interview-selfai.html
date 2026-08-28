@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>お話を、聞かせてください — AIで近親者を再表現してみた方へ｜高木良子</title>
+  <meta name="description" content="ChatGPTや音声合成などのAIを使い、ご自身で亡き近親者（祖父母・両親・子どもなど）の姿や声を再表現してみた経験について、文化人類学者 高木良子がお話を伺います。匿名・オンライン可・謝礼あり。" />
+  <meta name="author" content="高木良子 / Ryoko Takagi" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#faf9f7" />
+  <link rel="canonical" href="https://research.takagiryoko.com/interview-selfai.html" />
+
+  <!-- favicon / touch-icon -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="高木良子｜弔いとテクノロジー研究" />
+  <meta property="og:title" content="お話を、聞かせてください — AIで近親者を再表現してみた方へ" />
+  <meta property="og:description" content="ChatGPTや音声合成などのAIを使い、ご自身で亡き近親者の姿や声を再表現してみた経験について、文化人類学者 高木良子がお話を伺います。匿名・オンライン可・謝礼あり。" />
+  <meta property="og:url" content="https://research.takagiryoko.com/interview-selfai.html" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:image" content="https://research.takagiryoko.com/images/ogp.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="お話を、聞かせてください — AIで近親者を再表現してみた方へ" />
+  <meta name="twitter:description" content="ChatGPTや音声合成などのAIを使い、ご自身で亡き近親者の姿や声を再表現してみた経験について、文化人類学者 高木良子がお話を伺います。匿名・オンライン可・謝礼あり。" />
+  <meta name="twitter:image" content="https://research.takagiryoko.com/images/ogp.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Serif:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111;
+      --gray-dark: #444;
+      --gray-mid: #888;
+      --gray-light: #ccc;
+      --bg: #faf9f7;
+      --white: #fff;
+      --accent: #b08968;
+      --accent-dark: #8b6f47;
+      --navy: #1e3a5f;
+      --walnut: #5d4626;
+      --serif-ja: 'Noto Serif JP', serif;
+      --serif-en: 'Noto Serif', serif;
+      --sans-ja: 'Noto Sans JP', sans-serif;
+      --max-w: 720px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--serif-ja);
+      background: var(--bg);
+      color: var(--black);
+      line-height: 1.9;
+      font-size: 15px;
+      line-break: strict;
+      word-break: auto-phrase;
+    }
+
+    /* 段落の最終行が短くなるのを抑える（モダンブラウザで自動最適化） */
+    p, li {
+      text-wrap: pretty;
+    }
+    h1, h2, h3, .hero-title, .form-heading {
+      text-wrap: balance;
+    }
+
+    /* ── top bar ── */
+    .top-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 14px 24px;
+      background: rgba(250,249,247,.92);
+      backdrop-filter: blur(4px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s;
+    }
+    .top-bar.scrolled { border-bottom-color: var(--gray-light); }
+    .top-bar a {
+      font-size: 12px;
+      letter-spacing: .08em;
+      color: var(--gray-mid);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .top-bar a:hover { color: var(--black); }
+
+    /* ── sections ── */
+    section, .wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 36px 32px;
+    }
+
+    /* ── hero ── */
+    #hero {
+      padding-top: 120px;
+      padding-bottom: 40px;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .hero-title {
+      font-size: clamp(26px, 4.5vw, 38px);
+      font-weight: 400;
+      line-height: 1.45;
+      letter-spacing: .03em;
+      margin-bottom: 20px;
+    }
+    .hero-sub {
+      font-size: 15px;
+      line-height: 2;
+      color: var(--gray-dark);
+      max-width: 580px;
+    }
+
+    /* ── reassurance chips (above the fold) ── */
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 30px;
+    }
+    .chip {
+      font-size: 11px;
+      letter-spacing: .06em;
+      border: 1px solid var(--gray-light);
+      padding: 5px 12px;
+      color: var(--gray-dark);
+      background: var(--white);
+    }
+
+    /* ── jump to form CTA above fold ── */
+    .hero-cta {
+      margin-top: 26px;
+    }
+    .hero-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      letter-spacing: .08em;
+      color: var(--gray-dark);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gray-light);
+      padding-bottom: 3px;
+      transition: color .2s, border-color .2s;
+    }
+    .hero-cta a:hover { color: var(--black); border-color: var(--black); }
+    .hero-cta svg { width: 12px; height: 12px; }
+
+    /* ── researcher card ── */
+    .who-card {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      padding: 28px;
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      margin: 0 auto;
+      max-width: 100%;
+    }
+    .who-photo {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .who-body { flex: 1; min-width: 0; }
+    .who-name {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .who-name .en-name {
+      font-family: var(--serif-en);
+      font-size: 11px;
+      letter-spacing: .12em;
+      color: var(--gray-mid);
+      margin-left: 8px;
+    }
+    .who-affil {
+      font-size: 12px;
+      color: var(--gray-mid);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+    .who-msg {
+      font-size: 13px;
+      color: var(--gray-dark);
+      line-height: 1.9;
+    }
+    @media (max-width: 600px) {
+      .who-card { flex-direction: column; align-items: center; text-align: center; padding: 24px 20px; }
+      .who-affil, .who-msg { text-align: left; }
+    }
+
+    /* ── narrative section ── */
+    .narrative h2 {
+      font-size: 20px;
+      font-weight: normal;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .narrative p {
+      font-size: 15px;
+      line-height: 2;
+      color: var(--gray-dark);
+      margin-bottom: 1.2em;
+    }
+    .narrative p strong {
+      color: var(--black);
+      font-weight: 500;
+    }
+
+    /* ── "誰に" examples list ── */
+    .examples {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 18px 0 8px;
+      padding: 22px 26px;
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+    }
+    .examples li {
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: var(--gray-dark);
+      padding-left: 22px;
+      position: relative;
+    }
+    .examples li::before {
+      content: '◦';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 16px;
+      top: -2px;
+    }
+    .examples-note {
+      font-size: 12px;
+      color: var(--gray-mid);
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    /* ── what happens ── */
+    .what-grid {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 14px 20px;
+      margin: 16px 0;
+    }
+    .what-key {
+      font-size: 14px;
+      letter-spacing: .05em;
+      color: var(--black);
+      font-weight: 500;
+      line-height: 1.8;
+    }
+    .what-val {
+      font-size: 14px;
+      color: var(--gray-dark);
+      line-height: 1.8;
+    }
+    @media (max-width: 600px) {
+      .what-grid { grid-template-columns: 1fr; gap: 4px 0; }
+      .what-val { margin-bottom: 12px; }
+    }
+
+    /* ── promises ── */
+    .promises {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .promises li {
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: var(--gray-dark);
+      padding-left: 26px;
+      position: relative;
+    }
+    .promises li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 13px;
+      width: 14px; height: 1px;
+      background: var(--accent);
+    }
+    .promises li strong {
+      display: block;
+      color: var(--black);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+    p.promises-note {
+      font-size: 10px;
+      color: var(--gray-mid);
+      line-height: 1.85;
+      margin-top: 22px;
+      margin-bottom: 0;
+      padding-left: 26px;
+    }
+
+    /* ── form section ── */
+    #form-section {
+      padding-top: 60px;
+      padding-bottom: 40px;
+    }
+    .form-eyebrow {
+      font-size: 11px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .form-heading {
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: .04em;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .form-lead {
+      font-size: 13.5px;
+      color: var(--gray-dark);
+      text-align: center;
+      line-height: 1.9;
+      margin-bottom: 36px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .interview-form {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .form-row { display: flex; flex-direction: column; gap: 6px; }
+    .form-row label {
+      font-size: 12px;
+      letter-spacing: .08em;
+      color: var(--gray-dark);
+    }
+    .form-row label .opt {
+      font-size: 10px;
+      letter-spacing: .1em;
+      color: var(--gray-mid);
+      margin-left: 8px;
+      text-transform: uppercase;
+    }
+    .form-row .hint {
+      font-size: 11px;
+      color: var(--gray-mid);
+      margin-top: 2px;
+    }
+    .form-row input,
+    .form-row textarea {
+      font-family: var(--serif-ja);
+      font-size: 14px;
+      color: var(--black);
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color .2s;
+      width: 100%;
+      resize: vertical;
+    }
+    .form-row input:focus,
+    .form-row textarea:focus { border-color: var(--gray-mid); }
+    .form-submit {
+      align-self: center;
+      font-family: var(--serif-ja);
+      font-size: 13px;
+      letter-spacing: .12em;
+      background: var(--navy);
+      color: var(--white);
+      border: 1px solid var(--navy);
+      padding: 14px 36px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background .2s, letter-spacing .2s, border-color .2s;
+    }
+    .form-submit:hover {
+      background: var(--walnut);
+      border-color: var(--walnut);
+      letter-spacing: .14em;
+    }
+    .form-disclaimer {
+      font-size: 11px;
+      color: var(--gray-mid);
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.7;
+    }
+
+    /* ── alternative contact ── */
+    .alt-contact {
+      margin-top: 50px;
+      padding: 28px 24px;
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      text-align: center;
+    }
+    .alt-contact-title {
+      font-size: 13px;
+      letter-spacing: .12em;
+      color: var(--gray-dark);
+      margin-bottom: 18px;
+      font-weight: 500;
+    }
+    .alt-contact-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    @media (max-width: 480px) {
+      .alt-contact-links {
+        grid-template-columns: 1fr;
+      }
+    }
+    .alt-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 16px;
+      font-size: 13.5px;
+      color: var(--gray-dark);
+      text-decoration: none;
+      background: var(--bg);
+      border: 1px solid var(--gray-light);
+      transition: color .2s, background .2s, border-color .2s;
+    }
+    .alt-chip:hover {
+      color: var(--black);
+      background: var(--white);
+      border-color: var(--gray-dark);
+    }
+    .alt-chip svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+    /* LINE — green */
+    .alt-chip.is-line { color: #06672b; }
+    .alt-chip.is-line svg { color: #06C755; }
+    .alt-chip.is-line:hover { border-color: #06C755; background: #f1faf3; }
+
+    /* Mail — soft blue */
+    .alt-chip.is-mail svg { color: #3b82f6; }
+    .alt-chip.is-mail:hover { color: #1e3a8a; border-color: #93c5fd; background: #eaf3ff; }
+
+    /* X — soft gray */
+    .alt-chip.is-x svg { color: #111; }
+    .alt-chip.is-x:hover { color: #111; border-color: #9ca3af; background: #ececec; }
+
+    /* Instagram — soft pink-red */
+    .alt-chip.is-ig svg { color: #ec4467; }
+    .alt-chip.is-ig:hover { color: #be1b48; border-color: #f6a5b6; background: #fde6ec; }
+
+    /* ── back link ── */
+    .back-top {
+      display: block;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: .1em;
+      color: var(--gray-mid);
+      text-decoration: none;
+      margin-top: 50px;
+      transition: color .2s;
+    }
+    .back-top:hover { color: var(--black); }
+
+    /* ── footer ── */
+    footer {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 30px 32px 50px;
+      font-size: 11px;
+      color: var(--gray-mid);
+      border-top: 1px solid var(--gray-light);
+      text-align: center;
+    }
+
+    /* ── thanks (post-submit) ── */
+    .thanks-block {
+      display: none;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 36px 28px;
+      text-align: center;
+      background: var(--white);
+      border: 1px solid var(--accent);
+    }
+    .thanks-block h3 {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 14px;
+      color: var(--black);
+    }
+    .thanks-block p {
+      font-size: 13.5px;
+      color: var(--gray-dark);
+      line-height: 1.9;
+    }
+    body.submitted .interview-form,
+    body.submitted .form-disclaimer,
+    body.submitted .form-eyebrow,
+    body.submitted .form-heading,
+    body.submitted .form-lead { display: none; }
+    body.submitted .thanks-block { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- top bar with back link -->
+  <div class="top-bar" id="topBar">
+    <a href="/">← 高木良子｜弔いとテクノロジー研究</a>
+  </div>
+
+  <main>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <p class="hero-eyebrow">I N T E R V I E W &nbsp;&middot;&nbsp; お話を聞かせてください</p>
+    <h1 class="hero-title">
+      自分の手でAIの中に、<br>
+      亡き家族を描き出した——<br>
+      その経験を、聞かせてください。
+    </h1>
+    <p class="hero-sub">
+      ChatGPTや音声合成といったツールが身近になり、企業のサービスを使わずとも、自分の手で亡き近親者（祖父母・両親・配偶者・友人・ペットなど）の姿や声を再表現してみた——という方が、少しずつ現れはじめています。<br>
+      その経験を、文化人類学者の高木良子が伺っています。
+    </p>
+
+    <div class="chip-row">
+      <span class="chip">匿名 / ニックネーム可</span>
+      <span class="chip">オンライン可</span>
+      <span class="chip">60〜90分</span>
+      <span class="chip">薄謝あり</span>
+      <span class="chip">守秘義務あり</span>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#form-section">
+        まずはフォームへ
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── WHO IS ASKING ── -->
+  <section>
+    <div class="who-card">
+      <img class="who-photo" src="images/Profile.png" alt="高木良子" />
+      <div class="who-body">
+        <p class="who-name">高木 良子<span class="en-name">RYOKO TAKAGI</span></p>
+        <p class="who-affil">
+          文化人類学者 / 東京科学大学 環境・社会理工学院 博士後期課程
+        </p>
+        <p class="who-msg">
+          「弔いとテクノロジー」を主題に、AI故人・遺人形・デスマスクの質的調査を進めています。これまで企業サービスの利用者や開発者の方々に伺ってきましたが、いま個人の手元でAIによる再表現が始まっていることに、もうひとつの大きな変化を感じています。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY ── -->
+  <section class="narrative">
+    <h2>なぜ、お話を聞きたいのか</h2>
+    <p>
+      AIによる故人の再表現は、ここ数年の間に <strong>「TVメディアイベントにおける有名人を対象としたプロトタイプ」</strong> から <strong>「商用サービス」</strong> へ、近年は <strong>「個人がそれぞれの目的で自作する」</strong> 段階へと、急速に手元に降りてきています。
+    </p>
+    <p>
+      研究プロジェクトの被験者として体験することと、事業者の設計したインターフェース越しに体験すること、自分の判断でツールを選び、データを集め、プロンプトを書き、結果に向き合うこと——同じ「亡き人の再表現」でも、そこに立ち上がる経験は大きく違うはずです。
+    </p>
+    <p>
+      その違いを、当事者の方ご自身の言葉で聞かせていただきたい。それが、このページを立ち上げた理由です。
+    </p>
+  </section>
+
+  <!-- ── WHO ── -->
+  <section class="narrative">
+    <h2>こんな方にお声がけしたいです</h2>
+    <p>
+      たとえば、以下のいずれかに当てはまる方を探しています。完全に当てはまらなくても、<strong>「近いことをした／しようとした」と感じられる方であれば、ぜひ</strong>。
+    </p>
+    <ul class="examples">
+      <li>ChatGPT・Claude・Gemini などで、亡くなった方の文体や口調を再現してみた</li>
+      <li>音声合成ツール（ElevenLabs など）で、亡くなった方の声を再現してみた</li>
+      <li>写真からAIで動画を生成したり、表情を動かしたりしてみた</li>
+      <li>LoRAやファインチューニングで、独自モデルを自作してみた</li>
+      <li>生前に本人と一緒に、データを残す試みをした</li>
+      <li>SNSやLINEの過去ログから、その人の語り口を再構成してみた</li>
+      <li>「やってみたけれど、途中でやめた」「家族には言わずに試した」</li>
+      <li>「考えたけれど、踏みとどまった」</li>
+    </ul>
+    <p class="examples-note">対象は祖父母、両親、子ども、配偶者、友人、ペットなど、どなたとの関係でも構いません。</p>
+  </section>
+
+  <!-- ── WHAT ── -->
+  <section class="narrative">
+    <h2>どんな話を、どのように</h2>
+    <div class="what-grid">
+      <div class="what-key">形式</div>
+      <div class="what-val">オンライン（Zoom等）または対面、ご都合のよい方で。</div>
+
+      <div class="what-key">時間</div>
+      <div class="what-val">60〜90分程度。短時間で構わない場合もご相談ください。</div>
+
+      <div class="what-key">場所</div>
+      <div class="what-val">対面の場合は、東京近郊または日帰りで伺える範囲が中心です（遠方の方はご相談ください）。</div>
+
+      <div class="what-key">内容</div>
+      <div class="what-val">きっかけ、再表現の過程、いま使っているかどうか、ご自身やご家族の反応、感じていることなど。話したくないことは、お話いただかなくて大丈夫です。</div>
+
+      <div class="what-key">記録</div>
+      <div class="what-val">録音は許可をいただける場合のみ。録音なし・メモのみでも構いません。</div>
+    </div>
+  </section>
+
+  <!-- ── PROMISES ── -->
+  <section class="narrative">
+    <h2>大切にしていること</h2>
+    <ul class="promises">
+      <li><strong>守秘義務：</strong>個人を特定できる情報は、論文・著作・発表のいずれにおいても伏せます。</li>
+      <li><strong>匿名・仮名で記述：</strong>実名での記述をご希望の場合のみ、別途ご相談のうえ実名とさせていただきます。</li>
+      <li><strong>撤回はいつでも可能：</strong>インタビュー後にお話の一部、あるいは全体の利用停止をご希望される場合、いつでも対応します。</li>
+      <li><strong>データの保管と利用範囲：</strong>面談前に書面で改めてご説明し、ご同意をいただいた上で進めます。</li>
+      <li><strong>薄謝：</strong>Amazonカードをお渡しします。</li>
+    </ul>
+    <p class="promises-note">＊インタビューの前には十分なご説明を行い、研究倫理審査に基づいた、同意書と同意撤回書をご用意致します。</p>
+  </section>
+
+  <!-- ── FORM ── -->
+  <section id="form-section">
+    <p class="form-eyebrow">C O N T A C T &nbsp;&middot;&nbsp; お問い合わせ</p>
+    <h2 class="form-heading">まずは、ひとことだけ。</h2>
+    <p class="form-lead">
+      下のフォームから、お名前（ニックネーム可）と、ご連絡先を1つだけ、お知らせください。2〜3日以内に高木からご返信します。
+    </p>
+
+    <form
+      class="interview-form"
+      action="https://formspree.io/f/xrerzvog"
+      method="POST"
+    >
+      <input type="hidden" name="_subject" value="【インタビュー応募】AIで近親者を再表現してみた方へ" />
+      <input type="hidden" name="_replyto" value="takagiryoko@gmail.com" />
+      <input type="hidden" name="form_source" value="interview-selfai.html" />
+
+      <div class="form-row">
+        <label for="name">お名前・ニックネーム</label>
+        <input type="text" id="name" name="name" required autocomplete="name" placeholder="例：山田太郎、たろう、Tなど" />
+        <p class="hint">本名でなくて構いません。あとから変えていただいてもOKです。</p>
+      </div>
+
+      <div class="form-row">
+        <label for="contact">ご連絡先</label>
+        <input type="text" id="contact" name="contact" required placeholder="メール、X(@〜)、Instagram(@〜) など、ひとつだけで結構です" />
+        <p class="hint">どの方法でも構いません。お返事しやすい方をひとつだけ。</p>
+      </div>
+
+      <div class="form-row">
+        <label for="message">ひとことメッセージ<span class="opt">任意</span></label>
+        <textarea id="message" name="message" rows="5" placeholder="どんな短さ・どんな内容でも構いません。たとえば「祖母の声を再現してみた」「うまく動かなかった」「興味はあるけれどまだ迷っている」など。"></textarea>
+        <p class="hint">空欄のままでも送信できます。</p>
+      </div>
+
+      <button type="submit" class="form-submit">送信する</button>
+
+      <p class="form-disclaimer">
+        いただいた情報は、高木良子（研究者）が本研究の連絡目的にのみ使用し、第三者に共有されることはありません。
+      </p>
+    </form>
+
+    <div class="thanks-block">
+      <h3>お送りいただき、ありがとうございました。</h3>
+      <p>
+        2〜3日以内に、高木からご返信させていただきます。<br>
+        万一、しばらくしても届かない場合は、迷惑メールフォルダもご確認のうえ、お手数ですが <a href="mailto:takagi.r.b17b@m.isct.ac.jp" style="color:var(--accent-dark);">takagi.r.b17b@m.isct.ac.jp</a> 宛に再度ご連絡をお願いいたします。
+      </p>
+    </div>
+
+    <!-- ALTERNATIVE CONTACT ROUTES -->
+    <div class="alt-contact">
+      <p class="alt-contact-title">フォーム以外でのご連絡は、こちらから</p>
+      <div class="alt-contact-links">
+        <a href="https://line.me/R/ti/p/@814gfmzh" target="_blank" rel="noopener" class="alt-chip is-line">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+          </svg>
+          インタビュー窓口LINE
+        </a>
+        <a href="mailto:takagi.r.b17b@m.isct.ac.jp?subject=%E3%80%90%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%93%E3%83%A5%E3%83%BC%E5%BF%9C%E5%8B%9F%E3%80%91AI%E3%81%A7%E8%BF%91%E8%A6%AA%E8%80%85%E3%82%92%E5%86%8D%E8%A1%A8%E7%8F%BE%E3%81%97%E3%81%9F%E7%B5%8C%E9%A8%93%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" class="alt-chip is-mail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          メール
+        </a>
+        <a href="https://x.com/takagiryoko" target="_blank" rel="noopener" class="alt-chip is-x">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          X
+        </a>
+        <a href="https://www.instagram.com/takagi_ryoko_/" target="_blank" rel="noopener" class="alt-chip is-ig">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+
+    <a href="/" class="back-top">← トップページへ戻る</a>
+  </section>
+
+  </main>
+
+  <footer>
+    <p>Copyright © 2026 Takagi Ryoko. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // top bar border on scroll
+    const topBar = document.getElementById('topBar');
+    window.addEventListener('scroll', () => {
+      topBar.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // post-submit thanks (intercepts Formspree submit, shows in-page thanks)
+    const form = document.querySelector('.interview-form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = form.querySelector('.form-submit');
+      const originalLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = '送信中…';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        if (res.ok) {
+          document.body.classList.add('submitted');
+          window.scrollTo({ top: document.querySelector('.thanks-block').offsetTop - 80, behavior: 'smooth' });
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+          alert('送信に失敗しました。お手数ですが、メールまたはDMから直接ご連絡ください。');
+        }
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+        alert('送信に失敗しました。お手数ですが、メールまたはDMから直接ご連絡ください。');
+      }
+    });
+  </script>
+
+</body>
+</html>

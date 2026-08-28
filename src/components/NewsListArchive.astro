@@ -1,0 +1,37 @@
+---
+/**
+ * アーカイブページ用のニュース一覧
+ * 全件を年別にグループ化して表示
+ */
+import { getCollection } from 'astro:content';
+import NewsItem from './NewsItem.astro';
+
+const allNews = await getCollection('news');
+
+// 日付降順に並び替え
+allNews.sort((a, b) => {
+  const dateA = a.data.date instanceof Date ? a.data.date : new Date(String(a.data.date));
+  const dateB = b.data.date instanceof Date ? b.data.date : new Date(String(b.data.date));
+  return dateB.getTime() - dateA.getTime();
+});
+
+// 年別グループ化
+const byYear = new Map<number, typeof allNews>();
+for (const news of allNews) {
+  const date = news.data.date instanceof Date ? news.data.date : new Date(String(news.data.date));
+  const year = date.getFullYear();
+  if (!byYear.has(year)) byYear.set(year, []);
+  byYear.get(year)!.push(news);
+}
+
+const years = Array.from(byYear.keys()).sort((a, b) => b - a);
+---
+
+{years.map((year) => (
+  <div class="year-group" data-year={year}>
+    <h2 class="year-header">{year}</h2>
+    <ul class="talk-list">
+      {byYear.get(year)!.map((news) => <NewsItem news={news} />)}
+    </ul>
+  </div>
+))}

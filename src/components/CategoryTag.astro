@@ -1,0 +1,75 @@
+---
+/**
+ * ニュースのカテゴリータグ（アイコン付き）
+ * 現状の index.html / news.html と同じ視覚デザイン
+ */
+export interface Props {
+  category: 'paper' | 'book' | 'conf' | 'lect' | 'media' | 'grant' | 'other';
+  lang: 'ja' | 'en';
+}
+
+const { category, lang } = Astro.props;
+
+const labels: Record<Props['category'], { ja: string; en: string }> = {
+  paper: { ja: '論文', en: 'Paper' },
+  book:  { ja: '著書', en: 'Book' },
+  conf:  { ja: '学会発表', en: 'Conference' },
+  lect:  { ja: '講演・登壇', en: 'Talk' },
+  media: { ja: '寄稿・メディア', en: 'Media' },
+  grant: { ja: '助成金・受賞', en: 'Grant' },
+  other: { ja: 'その他', en: 'Other' }
+};
+
+const label = labels[category][lang];
+---
+
+<span class={`news-tag tag-${category}`}>
+  {category === 'paper' && (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+      <polyline points="14 3 14 9 20 9"/>
+      <line x1="8" y1="14" x2="15" y2="14"/>
+      <line x1="8" y1="18" x2="15" y2="18"/>
+    </svg>
+  )}
+  {category === 'book' && (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14z"/>
+      <line x1="8" y1="7" x2="16" y2="7"/>
+    </svg>
+  )}
+  {category === 'conf' && (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3a2 2 0 0 0-2 2v5a2 2 0 0 0 4 0V5a2 2 0 0 0-2-2z"/>
+      <path d="M18 10a6 6 0 0 1-12 0"/>
+      <line x1="12" y1="16" x2="12" y2="21"/>
+      <line x1="8" y1="21" x2="16" y2="21"/>
+    </svg>
+  )}
+  {category === 'lect' && (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="6" r="3"/>
+      <path d="M6 21v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3"/>
+    </svg>
+  )}
+  {category === 'media' && (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 20h9"/>
+      <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+    </svg>
+  )}
+  {category === 'grant' && (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="8" r="6"/>
+      <polyline points="8.21 13.89 7 22 12 19 17 22 15.79 13.88"/>
+    </svg>
+  )}
+  {category === 'other' && (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="1.2"/>
+      <circle cx="19" cy="12" r="1.2"/>
+      <circle cx="5" cy="12" r="1.2"/>
+    </svg>
+  )}
+  {label}
+</span>

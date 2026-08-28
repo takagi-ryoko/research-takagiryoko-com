@@ -1,0 +1,49 @@
+---
+/**
+ * ニュース1件を表示する <li> コンポーネント
+ * 日英両方の spans を含み、CSS の言語切替で片方を表示
+ */
+import type { CollectionEntry } from 'astro:content';
+import CategoryTag from './CategoryTag.astro';
+import ExtLink from './ExtLink.astro';
+
+export interface Props {
+  news: CollectionEntry<'news'>;
+}
+
+const { news } = Astro.props;
+const { data } = news;
+
+const displayDate = data.displayDate ?? (
+  data.date instanceof Date
+    ? data.date.toISOString().slice(0, 10).replace(/-/g, '.')
+    : String(data.date)
+);
+
+const liClasses = ['talk-item'];
+if (data.pinned) liClasses.push('pinned');
+---
+
+<li class={liClasses.join(' ')}>
+  <span class="talk-date">{displayDate}</span>
+  <div class="talk-body">
+    <p class="talk-title">
+      <span data-lang="ja">
+        <CategoryTag category={data.category} lang="ja" />
+        {data.extraCategories?.map(cat => <CategoryTag category={cat} lang="ja" />)}
+        <Fragment set:html={data.title_ja} />
+        {data.links?.map(link => (
+          <ExtLink href={link.url} ariaLabel={link.label_ja ?? '外部リンクを開く（別タブ）'} />
+        ))}
+      </span>
+      <span data-lang="en">
+        <CategoryTag category={data.category} lang="en" />
+        {data.extraCategories?.map(cat => <CategoryTag category={cat} lang="en" />)}
+        <Fragment set:html={data.title_en} />
+        {data.links?.map(link => (
+          <ExtLink href={link.url} ariaLabel={link.label_en ?? 'Open external link in new tab'} />
+        ))}
+      </span>
+    </p>
+  </div>
+</li>

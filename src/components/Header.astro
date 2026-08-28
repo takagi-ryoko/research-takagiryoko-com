@@ -1,0 +1,66 @@
+---
+/**
+ * サイト共通ヘッダー：スクロール進捗バー + ナビゲーション + モバイルメニュー
+ * 現状の index.html の該当部分をそのまま Astro 化したもの
+ */
+---
+
+<div class="nav-progress" id="navProgress"></div>
+
+<!-- unified header (nav + lang toggle) -->
+<header class="header-bar" id="headerBar">
+  <div class="header-inner">
+    <nav class="nav-links">
+      <a href="#hero" data-lang="ja">プロフィール</a>
+      <a href="#news" data-lang="ja">ニュース</a>
+      <a href="#about" data-lang="ja">研究について</a>
+      <a href="#interview" data-lang="ja" class="nav-cta">インタビュー</a>
+      <a href="#publications" data-lang="ja">業績</a>
+      <a href="#newsletter" data-lang="ja">ニュースレター配信</a>
+      <a href="#form" data-lang="ja">お問い合わせ</a>
+
+      <a href="#hero" data-lang="en">Profile</a>
+      <a href="#news" data-lang="en">News</a>
+      <a href="#about" data-lang="en">Research</a>
+      <a href="#interview" data-lang="en" class="nav-cta">Interview</a>
+      <a href="#publications" data-lang="en">Publications</a>
+      <a href="#newsletter" data-lang="en">Newsletter</a>
+      <a href="#form" data-lang="en">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-set-lang="ja" id="btn-ja" onclick="setLang('ja')">JP</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-set-lang="en" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile overlay menu -->
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <a href="#hero" data-lang="ja">プロフィール</a>
+  <a href="#news" data-lang="ja">ニュース</a>
+  <a href="#about" data-lang="ja">研究について</a>
+  <a href="#interview" data-lang="ja" class="nav-cta">インタビュー</a>
+  <a href="#publications" data-lang="ja">業績</a>
+  <a href="#newsletter" data-lang="ja">ニュースレター配信</a>
+  <a href="#form" data-lang="ja">お問い合わせ</a>
+
+  <a href="#hero" data-lang="en">Profile</a>
+  <a href="#news" data-lang="en">News</a>
+  <a href="#about" data-lang="en">Research</a>
+  <a href="#interview" data-lang="en" class="nav-cta">Interview</a>
+  <a href="#publications" data-lang="en">Publications</a>
+  <a href="#newsletter" data-lang="en">Newsletter</a>
+  <a href="#form" data-lang="en">Contact</a>
+
+  <div class="nav-overlay-lang">
+    <button class="lang-btn" data-set-lang="ja" onclick="setLang('ja')">JP</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-btn" data-set-lang="en" onclick="setLang('en')">EN</button>
+  </div>
+</div>

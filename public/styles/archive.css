@@ -1,0 +1,140 @@
+/*
+ * archive.css
+ * ニュースアーカイブページ（news.astro）専用の追加スタイル
+ * global.css を上書きする形で読み込む
+ */
+
+.archive-page body,
+body.archive-page {
+  line-break: strict;
+}
+
+/* top-bar (archiveページ用の上部バー、header-barとは別) */
+.top-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 24px;
+  background: rgba(250,249,247,.92);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.top-bar.scrolled { border-bottom-color: var(--gray-light); }
+.top-bar a {
+  font-size: 13px;
+  letter-spacing: .08em;
+  color: var(--gray-mid);
+  text-decoration: none;
+  transition: color .2s;
+}
+.top-bar a:hover { color: var(--black); }
+
+/* archive の section は padding が異なる */
+.archive-page section,
+body.archive-page section {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 40px 32px 40px;
+}
+
+#hero-mini {
+  padding-top: 100px;
+  padding-bottom: 20px;
+}
+.page-eyebrow {
+  font-size: 11px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--accent, #b08968);
+  margin-bottom: 14px;
+}
+.archive-page h1,
+body.archive-page h1 {
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 400;
+  letter-spacing: .04em;
+  margin-bottom: 14px;
+}
+.page-lead {
+  font-size: 14px;
+  color: var(--gray-dark);
+  line-height: 1.9;
+}
+
+/* ── filter bar ── */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 32px 0 8px;
+}
+.filter-btn {
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: .08em;
+  padding: 6px 14px;
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  color: var(--gray-dark);
+  cursor: pointer;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.filter-btn:hover { color: var(--black); border-color: var(--gray-mid); }
+.filter-btn.active {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+
+/* ── year headers ── */
+.year-header {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  color: var(--gray-mid);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--gray-light);
+  margin: 32px 0 20px;
+}
+.year-header:first-of-type { margin-top: 8px; }
+
+/* フィルタで非表示 */
+.talk-item.is-filtered { display: none; }
+.year-group.is-empty { display: none; }
+
+/* archiveページのback-topは中央寄せ */
+.archive-page .back-top,
+body.archive-page .back-top {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: .1em;
+  color: var(--gray-mid);
+  text-decoration: none;
+  margin-top: 60px;
+  transition: color .2s;
+}
+.archive-page .back-top:hover,
+body.archive-page .back-top:hover { color: var(--black); }
+
+/* archiveページのfooter */
+.archive-page footer,
+body.archive-page footer {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 30px 32px 50px;
+  font-size: 11px;
+  color: var(--gray-mid);
+  border-top: 1px solid var(--gray-light);
+  text-align: center;
+}
+
+/* archiveページ用の lang-bar（右上、header-barと異なる） */
+.archive-page .lang-bar,
+body.archive-page .lang-bar {
+  position: fixed;
+  top: 0; right: 0;
+  z-index: 100;
+  padding: 14px 24px;
+}

@@ -1,0 +1,63 @@
+---
+/**
+ * ニュースアーカイブ
+ * 現状の news.html を Astro 化。
+ * 全ニュースを年別に表示、カテゴリ絞り込み対応。
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NewsListArchive from '../components/NewsListArchive.astro';
+---
+
+<BaseLayout
+  title="ニュース アーカイブ｜高木良子｜弔いとテクノロジー研究"
+  description="文化人類学者 高木良子のニュース・活動履歴のアーカイブ。論文、学会発表、講演、寄稿、助成金採択などを年別・カテゴリー別に閲覧できます。"
+  ogType="article"
+  extraStyles={["/styles/archive.css"]}
+  extraScripts={["/scripts/archive.js"]}
+  bodyClass="archive-page"
+>
+  <div class="top-bar" id="topBar">
+    <a href="/">← 高木良子｜弔いとテクノロジー研究</a>
+  </div>
+
+  <div class="lang-bar">
+    <button class="lang-btn active" data-set-lang="ja" id="btn-ja" onclick="setLang('ja')">JP</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-btn" data-set-lang="en" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+
+  <main>
+
+    <section id="hero-mini">
+      <p class="page-eyebrow">A R C H I V E</p>
+      <h1>
+        <span data-lang="ja">ニュース アーカイブ</span>
+        <span data-lang="en">News Archive</span>
+      </h1>
+      <p class="page-lead">
+        <span data-lang="ja">これまでの研究・執筆・登壇・助成金採択などの活動をカテゴリー別に絞り込んで閲覧できます。</span>
+        <span data-lang="en">Browse past research activities, publications, talks, media contributions, and grants by category.</span>
+      </p>
+
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="all"><span data-lang="ja">すべて</span><span data-lang="en">All</span></button>
+        <button class="filter-btn" data-filter="paper"><span data-lang="ja">論文</span><span data-lang="en">Papers</span></button>
+        <button class="filter-btn" data-filter="book"><span data-lang="ja">著書</span><span data-lang="en">Books</span></button>
+        <button class="filter-btn" data-filter="conf"><span data-lang="ja">学会発表</span><span data-lang="en">Conferences</span></button>
+        <button class="filter-btn" data-filter="lect"><span data-lang="ja">講演・登壇</span><span data-lang="en">Talks</span></button>
+        <button class="filter-btn" data-filter="media"><span data-lang="ja">寄稿・メディア</span><span data-lang="en">Media</span></button>
+        <button class="filter-btn" data-filter="grant"><span data-lang="ja">助成金・受賞</span><span data-lang="en">Grants</span></button>
+      </div>
+    </section>
+
+    <section>
+      <NewsListArchive />
+      <a href="/" class="back-top">← トップページへ戻る</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Copyright © 2026 Takagi Ryoko. All rights reserved.</p>
+  </footer>
+</BaseLayout>

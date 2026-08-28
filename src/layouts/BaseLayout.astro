@@ -1,0 +1,153 @@
+---
+/**
+ * サイト全体で共有する基本レイアウト
+ * HEAD には現状 index.html の全メタタグ・OGP・JSON-LDを反映
+ */
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+  ogType?: string;
+  robots?: string;
+  extraStyles?: string[];
+  extraScripts?: string[];
+  bodyClass?: string;
+}
+
+const {
+  title = '高木良子｜弔いとテクノロジー研究',
+  description = 'AI故人・遺人形・デスマスクを対象に「弔いとテクノロジー」を研究する文化人類学者 高木良子の研究ページ。看取りから弔いまでを一連の営みとして捉える視座で、台湾の仏教式終末期ケアも扱う。',
+  ogImage = 'https://research.takagiryoko.com/images/ogp.png',
+  canonical = Astro.url.href,
+  ogType = 'profile',
+  robots = 'index, follow, max-image-preview:large',
+  extraStyles = [],
+  extraScripts = [],
+  bodyClass = ''
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="高木良子, Ryoko Takagi, 弔いとテクノロジー, AI故人, 遺人形, デスマスク, 文化人類学, 宗教学, 死生学, 終末期ケア, スピリチュアルケア, 台湾, 東京科学大学" />
+  <meta name="author" content="高木良子 / Ryoko Takagi" />
+  <meta name="robots" content={robots} />
+  <meta name="theme-color" content="#faf9f7" />
+  <link rel="canonical" href={canonical} />
+
+  <!-- favicon / touch-icon -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- 多言語 hreflang -->
+  <link rel="alternate" hreflang="ja" href={canonical} />
+  <link rel="alternate" hreflang="en" href={canonical} />
+  <link rel="alternate" hreflang="x-default" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content={ogType} />
+  <meta property="og:site_name" content="高木良子｜弔いとテクノロジー研究" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="弔いとテクノロジー研究 / Mourning, Memory, and Technology — 高木良子 Ryoko Takagi" />
+  <meta property="profile:first_name" content="良子" />
+  <meta property="profile:last_name" content="高木" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image:alt" content="弔いとテクノロジー研究 / Mourning, Memory, and Technology — 高木良子 Ryoko Takagi" />
+
+  <!-- 構造化データ（JSON-LD） -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://research.takagiryoko.com/#person",
+        "name": "高木良子",
+        "alternateName": ["Ryoko Takagi", "高木 良子", "たかぎ りょうこ"],
+        "url": "https://research.takagiryoko.com/",
+        "image": "https://research.takagiryoko.com/images/Profile.png",
+        "jobTitle": "博士研究員・博士後期課程",
+        "description": "文化人類学者。東京科学大学 環境・社会理工学院 博士後期課程在籍。AI故人、遺人形、デスマスクなど「弔いとテクノロジー」を主題に質的調査を進める。近年は台湾の仏教式終末期スピリチュアルケアも研究対象。",
+        "knowsLanguage": ["ja", "en"],
+        "affiliation": [
+          { "@type": "CollegeOrUniversity", "name": "東京科学大学 環境・社会理工学院", "sameAs": "https://www.isct.ac.jp/" },
+          { "@type": "Organization", "name": "国立研究開発法人科学技術振興機構", "sameAs": "https://www.jst.go.jp/" }
+        ],
+        "sameAs": [
+          "https://researchmap.jp/takagiryoko",
+          "https://ja.wikipedia.org/wiki/%E3%81%9F%E3%81%8B%E3%81%8E%E3%82%8A%E3%82%87%E3%81%86%E3%81%93",
+          "https://x.com/takagiryoko",
+          "https://www.facebook.com/takagiryoko",
+          "https://www.instagram.com/takagi_ryoko_/"
+        ],
+        "knowsAbout": ["弔いとテクノロジー", "AI故人", "遺人形", "デスマスク", "文化人類学", "宗教学", "死生学", "終末期スピリチュアルケア", "Mourning and Technology", "Death Masks", "Cultural Anthropology"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://research.takagiryoko.com/#website",
+        "url": "https://research.takagiryoko.com/",
+        "name": "弔いとテクノロジー研究｜高木良子",
+        "inLanguage": ["ja", "en"],
+        "author": { "@id": "https://research.takagiryoko.com/#person" },
+        "publisher": { "@id": "https://research.takagiryoko.com/#person" }
+      },
+      {
+        "@type": "Book",
+        "name": "死を感受する—情動論から生の潜在性へ",
+        "contributor": { "@id": "https://research.takagiryoko.com/#person" },
+        "publisher": { "@type": "Organization", "name": "京都大学学術出版会" },
+        "datePublished": "2025-12",
+        "inLanguage": "ja",
+        "url": "https://www.kyoto-up.or.jp/books/9784814006304.html",
+        "isbn": "9784814006304"
+      },
+      {
+        "@type": "Book",
+        "name": "RITA MAGAZINE 2 死者とテクノロジー",
+        "author": { "@id": "https://research.takagiryoko.com/#person" },
+        "publisher": { "@type": "Organization", "name": "ミシマ社" },
+        "datePublished": "2025-03",
+        "inLanguage": "ja",
+        "url": "https://mishimasha.com/books/9784911226179/",
+        "isbn": "9784911226179"
+      }
+    ]
+  })} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Serif:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+Thai:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="/styles/global.css" />
+  {extraStyles.map((href) => <link rel="stylesheet" href={href} />)}
+</head>
+<body class={bodyClass}>
+  <slot />
+
+  <script src="/scripts/site.js" is:inline></script>
+  {extraScripts.map((src) => <script src={src} is:inline></script>)}
+</body>
+</html>

@@ -4,20 +4,21 @@
  * 現状の index.html / news.html と同じ視覚デザイン
  */
 export interface Props {
-  category: 'paper' | 'book' | 'conf' | 'lect' | 'media' | 'grant' | 'other';
+  category: 'paper' | 'book' | 'conf' | 'lect' | 'media' | 'grant' | 'newsletter' | 'other';
   lang: 'ja' | 'en';
 }
 
 const { category, lang } = Astro.props;
 
 const labels: Record<Props['category'], { ja: string; en: string }> = {
-  paper: { ja: '論文', en: 'Paper' },
-  book:  { ja: '著書', en: 'Book' },
-  conf:  { ja: '学会発表', en: 'Conference' },
-  lect:  { ja: '講演・登壇', en: 'Talk' },
-  media: { ja: '寄稿・メディア', en: 'Media' },
-  grant: { ja: '助成金・受賞', en: 'Grant' },
-  other: { ja: 'その他', en: 'Other' }
+  paper:      { ja: '論文', en: 'Paper' },
+  book:       { ja: '著書', en: 'Book' },
+  conf:       { ja: '学会発表', en: 'Conference' },
+  lect:       { ja: '講演・登壇', en: 'Talk' },
+  media:      { ja: '寄稿・メディア', en: 'Media' },
+  grant:      { ja: '助成金・受賞', en: 'Grant' },
+  newsletter: { ja: 'ニュースレター', en: 'Newsletter' },
+  other:      { ja: 'その他', en: 'Other' }
 };
 
 const label = labels[category][lang];
@@ -62,6 +63,12 @@ const label = labels[category][lang];
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="8" r="6"/>
       <polyline points="8.21 13.89 7 22 12 19 17 22 15.79 13.88"/>
+    </svg>
+  )}
+  {category === 'newsletter' && (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5" width="18" height="14" rx="2"/>
+      <polyline points="3 7 12 13 21 7"/>
     </svg>
   )}
   {category === 'other' && (

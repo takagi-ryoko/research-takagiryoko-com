@@ -16,18 +16,19 @@ const news = defineCollection({
 
     /** カテゴリー（news-tag のクラスと対応） */
     category: z.enum([
-      'paper',    // 論文
-      'book',     // 著書
-      'conf',     // 学会発表
-      'lect',     // 講演・登壇
-      'media',    // 寄稿・メディア
-      'grant',    // 助成金・受賞
-      'other'     // その他
+      'paper',       // 論文
+      'book',        // 著書
+      'conf',        // 学会発表
+      'lect',        // 講演・登壇
+      'media',       // 寄稿・メディア
+      'grant',       // 助成金・受賞
+      'newsletter',  // ニュースレター
+      'other'        // その他
     ]),
 
     /** 追加カテゴリー（複数タグ対応、例: 論文かつ寄稿・メディア） */
     extraCategories: z.array(z.enum([
-      'paper', 'book', 'conf', 'lect', 'media', 'grant', 'other'
+      'paper', 'book', 'conf', 'lect', 'media', 'grant', 'newsletter', 'other'
     ])).optional(),
 
     /** 日本語タイトル（HTMLタグ許可） */

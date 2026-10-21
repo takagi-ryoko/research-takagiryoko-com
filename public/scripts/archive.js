@@ -48,7 +48,7 @@
   // URL パラメータ ?filter=xxx があれば自動適用
   const params = new URLSearchParams(window.location.search);
   const f = params.get('filter');
-  const valid = ['paper', 'book', 'conf', 'lect', 'media', 'grant', 'other'];
+  const valid = ['paper', 'book', 'conf', 'lect', 'media', 'grant', 'newsletter', 'other'];
   if (f && valid.indexOf(f) >= 0) {
     applyFilter(f);
     setTimeout(() => {

@@ -474,8 +474,9 @@
     .news-tag.tag-conf   { color: #7c2d12; border-color: #7c2d12; }
     .news-tag.tag-lect   { color: #5d4626; border-color: #5d4626; }
     .news-tag.tag-media  { color: #b08968; border-color: #b08968; }
-    .news-tag.tag-grant  { color: #14532d; border-color: #14532d; }
-    .news-tag.tag-other  { color: #9ca3af; border-color: #9ca3af; }
+    .news-tag.tag-grant       { color: #14532d; border-color: #14532d; }
+    .news-tag.tag-newsletter  { color: #6a5a8f; border-color: #6a5a8f; }
+    .news-tag.tag-other       { color: #9ca3af; border-color: #9ca3af; }
 
     /* ── pinned news (highlighted, always on top) ── */
     #news .talk-item.pinned {

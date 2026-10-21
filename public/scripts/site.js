@@ -137,11 +137,12 @@
       const CAT_LABEL_JA = {
         paper: '論文', book: '著書', conf: '学会発表',
         lect: '講演・登壇', media: '寄稿・メディア',
-        grant: '助成金・受賞', other: 'その他'
+        grant: '助成金・受賞', newsletter: 'ニュースレター', other: 'その他'
       };
       const CAT_LABEL_EN = {
         paper: 'papers', book: 'books', conf: 'conferences',
-        lect: 'talks', media: 'media', grant: 'grants', other: 'other'
+        lect: 'talks', media: 'media', grant: 'grants',
+        newsletter: 'newsletter', other: 'other'
       };
 
       // 「すべて／その他の◯◯を見る」リンクを更新

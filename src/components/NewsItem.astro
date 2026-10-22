@@ -22,6 +22,7 @@ const displayDate = data.displayDate ?? (
 
 const liClasses = ['talk-item'];
 if (data.pinned) liClasses.push('pinned');
+if (data.archiveOnly) liClasses.push('archive-only');
 ---
 
 <li class={liClasses.join(' ')}>

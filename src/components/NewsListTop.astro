@@ -6,8 +6,9 @@
 import { getCollection } from 'astro:content';
 import NewsItem from './NewsItem.astro';
 
-// archiveOnly でない項目を全部取得
-const allNews = await getCollection('news', (entry) => !entry.data.archiveOnly);
+// すべてのニュースを取得（archiveOnly 含む）
+// archiveOnly はデフォルト表示では非表示だが、タグフィルタ時には対象になる
+const allNews = await getCollection('news');
 
 // 日付降順に並び替え
 allNews.sort((a, b) => {

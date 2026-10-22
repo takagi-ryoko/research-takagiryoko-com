@@ -145,7 +145,7 @@
         newsletter: 'newsletter', other: 'other'
       };
 
-      // 「すべて／その他の◯◯を見る」リンクを更新
+      // 「すべて／さらに見る」リンクを更新
       function setViewAllLink(cat) {
         if (!viewAllLink) return;
         if (cat === 'all' || !cat) {
@@ -154,18 +154,23 @@
           if (viewAllLabelEn) viewAllLabelEn.textContent = 'See all news';
         } else {
           viewAllLink.href = '/news.html?filter=' + encodeURIComponent(cat);
-          if (viewAllLabelJa) viewAllLabelJa.textContent = 'その他の' + (CAT_LABEL_JA[cat] || '') + 'を見る';
-          if (viewAllLabelEn) viewAllLabelEn.textContent = 'See other ' + (CAT_LABEL_EN[cat] || 'news');
+          if (viewAllLabelJa) viewAllLabelJa.textContent = 'さらに' + (CAT_LABEL_JA[cat] || '') + 'を見る';
+          if (viewAllLabelEn) viewAllLabelEn.textContent = 'See more ' + (CAT_LABEL_EN[cat] || 'news');
         }
       }
 
-      // デフォルト表示（ピン留め＋非ピン留め最新N件）
+      // デフォルト表示（ピン留め＋非ピン留め最新N件、archive-only は非表示）
       function applyDefault() {
         newsSection.classList.remove('filtering');
         let nonPinnedShown = 0;
         let hasPins = false;
         items.forEach(item => {
           item.classList.remove('is-filter-hidden', 'is-hidden-top');
+          // archive-only はデフォルトでは非表示
+          if (item.classList.contains('archive-only')) {
+            item.classList.add('is-hidden-top');
+            return;
+          }
           if (item.classList.contains('pinned')) {
             hasPins = true;
             return;
@@ -180,11 +185,10 @@
         if (viewAllLink) viewAllLink.classList.remove('is-hidden');
       }
 
-      // カテゴリ絞り込み表示（該当カテゴリのうち最新N件）
+      // カテゴリ絞り込み表示（該当カテゴリのうち最新N件、archive-only も含む）
       function applyFilter(cat) {
         newsSection.classList.add('filtering');
         let shown = 0;
-        let matchCount = 0;
         items.forEach(item => {
           item.classList.remove('is-hidden-top');
           const hasTag = item.querySelector(`.tag-${cat}`);
@@ -192,7 +196,6 @@
             item.classList.add('is-filter-hidden');
             return;
           }
-          matchCount++;
           if (shown >= TOP_LIMIT) {
             item.classList.add('is-filter-hidden');
           } else {
@@ -200,11 +203,9 @@
             shown++;
           }
         });
-        // 該当カテゴリが5件超なら「その他の◯◯を見る」を表示
+        // フィルタ中は常に「さらに◯◯を見る」リンクを表示
         setViewAllLink(cat);
-        if (viewAllLink) {
-          viewAllLink.classList.toggle('is-hidden', matchCount <= TOP_LIMIT);
-        }
+        if (viewAllLink) viewAllLink.classList.remove('is-hidden');
       }
 
       // 初期化

@@ -43,12 +43,21 @@ const news = defineCollection({
     /** アーカイブページのみ表示（トップページには載せない） */
     archiveOnly: z.boolean().default(false),
 
-    /** 外部リンク（複数可） */
+    /** 外部リンク（複数可）
+     *  url を1つ指定するか、言語別に url_ja / url_en を指定する。
+     *  言語別がある場合は、該当言語の span でその URL が使われる。
+     *  url のみの場合はどちらの言語でも共通で使われる。
+     */
     links: z.array(z.object({
-      url: z.string().url(),
+      url: z.string().url().optional(),
+      url_ja: z.string().url().optional(),
+      url_en: z.string().url().optional(),
       label_ja: z.string().optional(),
       label_en: z.string().optional()
-    })).optional()
+    }).refine(
+      (link) => link.url || link.url_ja || link.url_en,
+      { message: 'url か url_ja/url_en のいずれかが必要です' }
+    )).optional()
   })
 });
 

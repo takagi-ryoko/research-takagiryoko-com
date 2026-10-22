@@ -32,16 +32,16 @@ if (data.pinned) liClasses.push('pinned');
         <CategoryTag category={data.category} lang="ja" />
         {data.extraCategories?.map(cat => <CategoryTag category={cat} lang="ja" />)}
         <Fragment set:html={data.title_ja} />
-        {data.links?.map(link => (
-          <ExtLink href={link.url_ja ?? link.url ?? link.url_en!} ariaLabel={link.label_ja ?? '外部リンクを開く（別タブ）'} />
+        {data.links?.filter(l => l.url_ja ?? l.url).map(link => (
+          <ExtLink href={link.url_ja ?? link.url!} ariaLabel={link.label_ja ?? '外部リンクを開く（別タブ）'} />
         ))}
       </span>
       <span data-lang="en">
         <CategoryTag category={data.category} lang="en" />
         {data.extraCategories?.map(cat => <CategoryTag category={cat} lang="en" />)}
         <Fragment set:html={data.title_en} />
-        {data.links?.map(link => (
-          <ExtLink href={link.url_en ?? link.url ?? link.url_ja!} ariaLabel={link.label_en ?? 'Open external link in new tab'} />
+        {data.links?.filter(l => l.url_en ?? l.url).map(link => (
+          <ExtLink href={link.url_en ?? link.url!} ariaLabel={link.label_en ?? 'Open external link in new tab'} />
         ))}
       </span>
     </p>

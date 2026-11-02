@@ -1,0 +1,105 @@
+---
+/**
+ * English Summaries page (EN-only content page)
+ * theLetter 日本語論考の英語サマリー PDF をリスト表示するページ。
+ * 日英の言語切替UIは残しつつ、本文は英語のみ。
+ */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const summaries = await getCollection('english-summaries');
+summaries.sort((a, b) => {
+  const dateA = a.data.date instanceof Date ? a.data.date : new Date(String(a.data.date));
+  const dateB = b.data.date instanceof Date ? b.data.date : new Date(String(b.data.date));
+  return dateB.getTime() - dateA.getTime();
+});
+---
+
+<BaseLayout
+  title="English Summaries | Takagi Ryoko | Field Notes on Mourning"
+  description="English summaries of Ryoko Takagi's Japanese essays published in the newsletter Field Notes on Mourning (弔いのフィールドノート). Each issue distills one essay for English readers; the full Japanese version is available on theLetter."
+  ogType="article"
+  extraStyles={["/styles/english-summaries.css"]}
+  bodyClass="english-summaries-page"
+>
+  <div class="top-bar" id="topBar">
+    <a href="/?lang=en">← Takagi Ryoko | Field Notes on Mourning</a>
+  </div>
+
+  <div class="lang-bar">
+    <button class="lang-btn" data-set-lang="ja" id="btn-ja" onclick="setLang('ja')">JP</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-btn active" data-set-lang="en" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+
+  <main class="es-main">
+
+    <header class="es-masthead">
+      <div class="es-masthead-row">
+        <p class="es-eyebrow">N E W S L E T T E R</p>
+        <p class="es-issue-info"><span class="es-issue-info-inner">English Summaries · Field Notes on Mourning</span></p>
+      </div>
+      <h1 class="es-title">English Summaries</h1>
+      <p class="es-lead">
+        Each month I publish one essay in Japanese on <a href="https://takagiryoko.theletter.jp/" target="_blank" rel="noopener">theLetter</a>, as part of the newsletter <em>Field Notes on Mourning</em> (『弔いのフィールドノート』). Here I share a short English summary of each issue, so that readers outside Japan can follow the thread. If you would like a fuller English version of any essay, please get in touch through the <a href="/?lang=en#form">contact form</a>.
+      </p>
+    </header>
+
+    <section class="es-list">
+      {summaries.map((entry) => (
+        <article class="es-item">
+          <a href={`/english-summaries/${entry.data.pdf}`} target="_blank" rel="noopener" class="es-thumb-link" aria-label={`Open PDF: ${entry.data.title}`}>
+            <img
+              src={`/english-summaries/${entry.data.thumbnail}`}
+              alt={`Cover of Issue ${entry.data.issue}: ${entry.data.title}`}
+              class="es-thumb"
+              loading="lazy"
+            />
+          </a>
+          <div class="es-body">
+            <p class="es-meta">
+              <span class="es-section">{entry.data.section ?? ''}</span>
+              <span class="es-dot">·</span>
+              <span class="es-date">Issue {entry.data.issue} · {entry.data.displayDate}</span>
+            </p>
+            <h2 class="es-item-title">
+              <a href={`/english-summaries/${entry.data.pdf}`} target="_blank" rel="noopener">{entry.data.title}</a>
+            </h2>
+            {entry.data.original_title_ja && (
+              <p class="es-original-title">Summary of 「{entry.data.original_title_ja}」 (in Japanese)</p>
+            )}
+            <p class="es-description">{entry.data.description}</p>
+            <div class="es-actions">
+              <a href={`/english-summaries/${entry.data.pdf}`} target="_blank" rel="noopener" class="es-cta es-cta-primary">
+                Open PDF ↗
+              </a>
+              {entry.data.letter_url && (
+                <a href={entry.data.letter_url} target="_blank" rel="noopener" class="es-cta es-cta-ghost">
+                  Full article in Japanese ↗
+                </a>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <section class="es-cta-block">
+      <p class="es-cta-eyebrow">R E Q U E S T  A  F U L L E R  V E R S I O N</p>
+      <h2 class="es-cta-title">Would you like to read a fuller English version?</h2>
+      <p class="es-cta-text">
+        These summaries distill the shape of each essay. If you are a researcher, journalist, or publisher who would like a longer English version of a particular piece—whether for citation, translation, or editorial use—please let me know. I am also happy to discuss shared research interests, collaborations, or invitations to write.
+      </p>
+      <p class="es-cta-actions">
+        <a href="/?lang=en#form" class="es-cta es-cta-dark">Contact form →</a>
+      </p>
+    </section>
+
+    <a href="/?lang=en" class="back-top">← Back to home</a>
+
+  </main>
+
+  <footer>
+    <p>Copyright © 2026 Takagi Ryoko. All rights reserved.</p>
+  </footer>
+</BaseLayout>

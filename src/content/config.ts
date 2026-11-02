@@ -61,6 +61,39 @@ const news = defineCollection({
   })
 });
 
+/**
+ * theLetter 英語サマリーのスキーマ
+ * 1件 = 1 Markdown ファイル。
+ * ファイル配置: src/content/english-summaries/issue-XX.md
+ * 対応するPDF/サムネイル: public/english-summaries/
+ */
+const englishSummaries = defineCollection({
+  type: 'content',
+  schema: z.object({
+    /** Issue 番号（例: 1, 2, 3） */
+    issue: z.number().int().positive(),
+    /** 発行日（YYYY-MM-DD） */
+    date: z.union([z.date(), z.string()]),
+    /** 発行年月の表示文字列（例: "November 2026"） */
+    displayDate: z.string(),
+    /** セクション名（例: "FIELDNOTES", "ESSAY", "COMMENTARY"） */
+    section: z.string().optional(),
+    /** 英文タイトル */
+    title: z.string(),
+    /** 原著の日本語タイトル */
+    original_title_ja: z.string().optional(),
+    /** 短い説明文（1〜2段落） */
+    description: z.string(),
+    /** PDF ファイル名（public/english-summaries/ からの相対） */
+    pdf: z.string(),
+    /** サムネイル画像ファイル名（public/english-summaries/ からの相対） */
+    thumbnail: z.string(),
+    /** 原著の theLetter 記事 URL（日本語フル版） */
+    letter_url: z.string().url().optional()
+  })
+});
+
 export const collections = {
-  news
+  news,
+  'english-summaries': englishSummaries
 };

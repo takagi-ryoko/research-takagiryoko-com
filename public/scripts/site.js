@@ -16,8 +16,14 @@
       }
     }
 
-    // 初期言語を決定：?lang > ブラウザ言語（デフォルト日本語）
+    // 初期言語を決定：body[data-forced-lang] > ?lang > ブラウザ言語（デフォルト日本語）
+    // 言語固定ページ（<body data-forced-lang="en">）では常にその言語を使う
     (function() {
+      const forced = document.body.dataset.forcedLang;
+      if (forced === 'ja' || forced === 'en') {
+        setLang(forced, { updateUrl: false });
+        return;
+      }
       const params = new URLSearchParams(window.location.search);
       const p = params.get('lang');
       let initial = 'ja';

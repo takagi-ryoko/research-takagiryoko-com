@@ -2,7 +2,7 @@
 /**
  * English Summaries page (EN-only content page)
  * theLetter 日本語論考の英語サマリー PDF をリスト表示するページ。
- * 日英の言語切替UIは残しつつ、本文は英語のみ。
+ * 英語専用ページ：lang="en" を固定、JP/EN トグルは表示しない。
  */
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -17,19 +17,17 @@ summaries.sort((a, b) => {
 
 <BaseLayout
   title="English Summaries | Takagi Ryoko | Field Notes on Mourning"
-  description="English summaries of Ryoko Takagi's Japanese essays published in the newsletter Field Notes on Mourning (弔いのフィールドノート). Each issue distills one essay for English readers; the full Japanese version is available on theLetter."
+  description="English summaries of research-oriented commentaries from Ryoko Takagi's Japanese newsletter Field Notes on Mourning (弔いのフィールドノート). Each short PDF distills one piece for readers outside Japan; the full Japanese version is on theLetter."
   ogType="article"
+  htmlLang="en"
+  ogLocale="en_US"
+  bilingual={false}
+  forcedLang="en"
   extraStyles={["/styles/english-summaries.css"]}
   bodyClass="english-summaries-page"
 >
   <div class="top-bar" id="topBar">
     <a href="/?lang=en">← Takagi Ryoko | Field Notes on Mourning</a>
-  </div>
-
-  <div class="lang-bar">
-    <button class="lang-btn" data-set-lang="ja" id="btn-ja" onclick="setLang('ja')">JP</button>
-    <span class="lang-sep">|</span>
-    <button class="lang-btn active" data-set-lang="en" id="btn-en" onclick="setLang('en')">EN</button>
   </div>
 
   <main class="es-main">

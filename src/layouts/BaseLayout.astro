@@ -13,6 +13,14 @@ export interface Props {
   extraStyles?: string[];
   extraScripts?: string[];
   bodyClass?: string;
+  /** <html lang="..."> の初期値。英語専用ページでは 'en' を渡す */
+  htmlLang?: string;
+  /** og:locale の初期値。英語専用ページでは 'en_US' を渡す */
+  ogLocale?: string;
+  /** 多言語切替ページかどうか。false なら hreflang alternate を出さない */
+  bilingual?: boolean;
+  /** 言語を固定するページで指定（'ja' or 'en'）。site.js の初期言語検出をバイパスする */
+  forcedLang?: 'ja' | 'en';
 }
 
 const {
@@ -24,12 +32,16 @@ const {
   robots = 'index, follow, max-image-preview:large',
   extraStyles = [],
   extraScripts = [],
-  bodyClass = ''
+  bodyClass = '',
+  htmlLang = 'ja',
+  ogLocale = 'ja_JP',
+  bilingual = true,
+  forcedLang
 } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="ja">
+<html lang={htmlLang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,10 +60,14 @@ const {
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-  <!-- 多言語 hreflang -->
-  <link rel="alternate" hreflang="ja" href={canonical} />
-  <link rel="alternate" hreflang="en" href={canonical} />
-  <link rel="alternate" hreflang="x-default" href={canonical} />
+  <!-- 多言語 hreflang（同一URL内で言語切替するバイリンガルページのみ） -->
+  {bilingual && (
+    <>
+      <link rel="alternate" hreflang="ja" href={canonical} />
+      <link rel="alternate" hreflang="en" href={canonical} />
+      <link rel="alternate" hreflang="x-default" href={canonical} />
+    </>
+  )}
 
   <!-- Open Graph -->
   <meta property="og:type" content={ogType} />
@@ -59,8 +75,8 @@ const {
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
-  <meta property="og:locale" content="ja_JP" />
-  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale" content={ogLocale} />
+  {bilingual && <meta property="og:locale:alternate" content={ogLocale === 'ja_JP' ? 'en_US' : 'ja_JP'} />}
   <meta property="og:image" content={ogImage} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -144,7 +160,7 @@ const {
   <link rel="stylesheet" href="/styles/global.css" />
   {extraStyles.map((href) => <link rel="stylesheet" href={href} />)}
 </head>
-<body class={bodyClass}>
+<body class={bodyClass} data-forced-lang={forcedLang}>
   <slot />
 
   <script src="/scripts/site.js" is:inline></script>

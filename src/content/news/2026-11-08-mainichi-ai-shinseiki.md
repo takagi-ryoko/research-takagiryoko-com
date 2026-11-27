@@ -8,7 +8,4 @@ links:
   - url: https://mainichi.jp/articles/20261105/k00/00m/040/042000c
     label_ja: 毎日新聞で読む
     label_en: Read on Mainichi Shimbun
-  - url: https://mainichi.jp/new-century/
-    label_ja: 連載「AI新世紀」
-    label_en: Series "AI New Century"
 ---
